@@ -19,7 +19,9 @@ hoping to support:
 find and add hyperedges converted graph (e.g. `rich.json`)
 
 find all hyperedges (noisy, but can be used for graph analysis):
+
 `cargo run rich.json`
 
 find hyperedges on specific property value (supports * wildcard):
+
 `cargo run rich.json <value>`
