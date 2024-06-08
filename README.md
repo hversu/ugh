@@ -1,5 +1,5 @@
-# ugh!
-universal graph harness - a set of tools for casting graphs of any form to efficient universal structures
+# ugh! (universal graph harness)!
+ - a set of tools for casting graphs of any form to efficient universal structures
 
 ## universal_graph_transformer
 
