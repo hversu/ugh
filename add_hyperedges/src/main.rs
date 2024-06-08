@@ -55,6 +55,14 @@ fn save_json<T: Serialize>(data: &T, filename: &str) -> Result<(), Box<dyn std::
     Ok(())
 }
 
+fn match_property_value(value: &str, filter: &str) -> bool {
+    if filter.contains('*') {
+        let parts: Vec<&str> = filter.split('*').collect();
+        return parts.iter().all(|part| value.contains(part));
+    }
+    value == filter
+}
+
 fn add_hyperedges(graph: &mut Graph, filter_property: Option<String>) {
     let mut node_prop_map: HashMap<String, Vec<String>> = HashMap::new();
     let mut edge_prop_map: HashMap<String, Vec<String>> = HashMap::new();
@@ -81,7 +89,7 @@ fn add_hyperedges(graph: &mut Graph, filter_property: Option<String>) {
             let parts: Vec<&str> = property.split("::").collect();
             let key = parts[0];
             let value = parts[1];
-            if filter_property.as_deref() == Some(value) || filter_property.is_none() {
+            if filter_property.as_deref().map_or(true, |filter| match_property_value(value, filter)) {
                 graph.hyperedges.push(Hyperedge {
                     label: value.to_string(),
                     edge_type: key.to_string(),
@@ -98,7 +106,7 @@ fn add_hyperedges(graph: &mut Graph, filter_property: Option<String>) {
             let parts: Vec<&str> = property.split("::").collect();
             let key = parts[0];
             let value = parts[1];
-            if filter_property.as_deref() == Some(value) || filter_property.is_none() {
+            if filter_property.as_deref().map_or(true, |filter| match_property_value(value, filter)) {
                 graph.hyperedges.push(Hyperedge {
                     label: value.to_string(),
                     edge_type: key.to_string(),
