@@ -3,6 +3,7 @@ use std::collections::HashMap;
 use std::error::Error;
 use std::fs::File;
 use std::io::Read;
+
 use crate::types::{Node, Edge};
 
 #[derive(Deserialize, Debug)]
@@ -14,6 +15,7 @@ struct JsonInput {
 #[derive(Deserialize, Debug)]
 struct IdentityAndVerdict {
     threat: Threat,
+    whois: Option<HashMap<String, String>>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -24,6 +26,7 @@ struct Threat {
 #[derive(Deserialize, Debug)]
 struct ActivityAndRelationships {
     related_items: RelatedItems,
+    dns: Option<Vec<DnsRecord>>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -40,22 +43,41 @@ struct ResolveRelationship {
     ip: String,
 }
 
+#[derive(Deserialize, Debug)]
+struct DnsRecord {
+    #[serde(rename = "type")]
+    record_type: String,
+    value: String,
+}
+
 pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn Error>> {
     let mut file = File::open(filename)?;
     let mut data = String::new();
     file.read_to_string(&mut data)?;
 
-    // Parse the JSON input
     let json_input: JsonInput = serde_json::from_str(&data)?;
 
     let threat_query = json_input.identity_and_verdict.threat.query;
-
     let mut nodes = Vec::new();
     let mut edges = Vec::new();
 
+    // Add the threat node with properties
+    let mut threat_props = HashMap::new();
+    if let Some(whois) = &json_input.identity_and_verdict.whois {
+        for (key, value) in whois {
+            threat_props.insert(key.clone(), value.clone());
+        }
+    }
+    nodes.push(Node {
+        id: threat_query.clone(),
+        label: threat_query.clone(),
+        node_type: "threat".to_string(),
+        properties: threat_props,
+    });
+
     if let Some(activity) = json_input.activity_and_relationships {
-        if let Some(related_items) = activity.related_items.communicating_files {
-            for file in related_items {
+        if let Some(communicating_files) = activity.related_items.communicating_files {
+            for file in communicating_files {
                 nodes.push(Node {
                     id: file.clone(),
                     label: "Communicating File".to_string(),
@@ -108,12 +130,42 @@ pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
             }
         }
 
-        if let Some(resolves_to) = activity.related_items.resolves_to {
-            for resolve in resolves_to {
+        if let Some(resolutions) = activity.related_items.resolves_to {
+            for resolution in resolutions {
+                nodes.push(Node {
+                    id: resolution.domain.clone(),
+                    label: "Resolved Domain".to_string(),
+                    node_type: "domain".to_string(),
+                    properties: HashMap::new(),
+                });
+                nodes.push(Node {
+                    id: resolution.ip.clone(),
+                    label: "Resolved IP".to_string(),
+                    node_type: "ip".to_string(),
+                    properties: HashMap::new(),
+                });
                 edges.push(Edge {
-                    source: resolve.domain.clone(),
-                    target: resolve.ip.clone(),
+                    source: resolution.domain.clone(),
+                    target: resolution.ip.clone(),
                     relation_type: "resolves_to".to_string(),
+                    properties: HashMap::new(),
+                });
+            }
+        }
+
+        if let Some(dns_records) = activity.dns {
+            for dns_record in dns_records {
+                nodes.push(Node {
+                    id: dns_record.value.clone(),
+                    label: dns_record.record_type.clone(),
+                    node_type: "dns".to_string(),
+                    properties: HashMap::new(),
+                });
+
+                edges.push(Edge {
+                    source: threat_query.clone(),
+                    target: dns_record.value.clone(),
+                    relation_type: "has_dns".to_string(),
                     properties: HashMap::new(),
                 });
             }
@@ -128,8 +180,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_parse_json() {
-        let result = parse_json("example.json");
+    fn test_parse_vt_json() {
+        let result = parse_vt_json("example.json");
         assert!(result.is_ok());
 
         let (nodes, edges) = result.unwrap();
