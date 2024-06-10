@@ -12,6 +12,8 @@ pub fn transform_graph(input: &str, mode: &str) -> Result<(), Box<dyn Error>> {
         if is_file(input) {
             if input.ends_with(".graphml") || input.ends_with(".maltego") {
                 parse_graphml(input)?
+            } else if input.ends_with(".json") {
+                parse_vt_json(input)?
             } else {
                 return Err("Auto could not identify".into());
             }
