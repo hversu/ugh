@@ -5,26 +5,10 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufReader};
 use std::error::Error;
+use crate::types::{Node, Edge};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Node {
-    pub id: String,
-    pub label: String,
-    #[serde(rename = "type")]
-    pub node_type: String,
-    pub properties: HashMap<String, String>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Edge {
-    pub source: String,
-    pub target: String,
-    pub relation_type: String,
-    pub properties: HashMap<String, String>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Graph {
+pub struct GraphML {
     pub nodes: Vec<Node>,
     pub edges: Vec<Edge>,
 }
