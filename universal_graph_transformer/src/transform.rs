@@ -2,16 +2,32 @@ use serde::Serialize;
 use std::fs::File;
 use std::io::BufWriter;
 use std::error::Error;
-use crate::graphml_parser::{Graph, parse_graphml};
+use crate::graphml_parser::parse_graphml;
+use crate::vt_parser::parse_vt_json;
+use crate::input_type::is_file;
+use crate::types::{Graph};
 
-pub fn transform_graph(filename: &str, mode: &str) -> Result<(), Box<dyn Error>> {
-    let (nodes, edges) = if mode == "auto" || mode == "graphml" || mode == "maltego" {
-        parse_graphml(filename)?
+pub fn transform_graph(input: &str, mode: &str) -> Result<(), Box<dyn Error>> {
+    let (nodes, edges) = if mode == "auto" {
+        if is_file(input) {
+            if input.ends_with(".graphml") || input.ends_with(".maltego") {
+                parse_graphml(input)?
+            } else {
+                return Err("Auto could not identify".into());
+            }
+        } else {
+            parse_vt_json(input)?
+        }
+    } else if mode == "graphml" || mode == "maltego" {
+        parse_graphml(input)?
+    } else if mode == "vt_api" {
+        parse_vt_json(input)?
     } else {
         return Err("Unsupported mode".into());
     };
 
     let rich_graph = Graph { nodes, edges };
+
     save_json(&rich_graph, "rich.json")?;
 
     Ok(())
