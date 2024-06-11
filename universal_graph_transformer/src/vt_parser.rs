@@ -1,8 +1,6 @@
 use serde::{Deserialize};
 use std::collections::HashMap;
 use std::error::Error;
-use std::fs::File;
-use std::io::Read;
 
 use crate::types::{Node, Edge};
 
@@ -20,7 +18,7 @@ struct IdentityAndVerdict {
 
 #[derive(Deserialize, Debug)]
 struct Threat {
-    query: String,
+    query: Option<String>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -50,30 +48,39 @@ struct DnsRecord {
     value: String,
 }
 
-pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn Error>> {
-    let mut file = File::open(filename)?;
-    let mut data = String::new();
-    file.read_to_string(&mut data)?;
+pub fn parse_vt_json(json_data: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn Error>> {
+    println!("{:?}", json_data);
+    let json_input: JsonInput = serde_json::from_str(json_data)?;
 
-    let json_input: JsonInput = serde_json::from_str(&data)?;
-
-    let threat_query = json_input.identity_and_verdict.threat.query;
     let mut nodes = Vec::new();
     let mut edges = Vec::new();
 
-    // Add the threat node with properties
-    let mut threat_props = HashMap::new();
-    if let Some(whois) = &json_input.identity_and_verdict.whois {
-        for (key, value) in whois {
-            threat_props.insert(key.clone(), value.clone());
+    // Extract threat_query as an Option
+    let threat_query = json_input.identity_and_verdict.threat.query.clone(); // Clone to get an Option<String>
+
+    // Conditional block that only runs if threat_query is Some
+    if let Some(threat_query) = threat_query {
+        // Initialize threat_props
+        let mut threat_props = HashMap::new();
+
+        // Conditionally handle the `whois` data
+        if let Some(whois) = &json_input.identity_and_verdict.whois {
+            for (key, value) in whois {
+                threat_props.insert(key.clone(), value.clone());
+            }
         }
+
+        // Add the threat node to nodes
+        nodes.push(Node {
+            id: threat_query.clone(),
+            label: threat_query.clone(),
+            node_type: "threat".to_string(),
+            properties: threat_props,
+        });
+    } else {
+        // Optionally handle the case where threat_query is None
+        println!("No threat query found.");
     }
-    nodes.push(Node {
-        id: threat_query.clone(),
-        label: threat_query.clone(),
-        node_type: "threat".to_string(),
-        properties: threat_props,
-    });
 
     if let Some(activity) = json_input.activity_and_relationships {
         if let Some(communicating_files) = activity.related_items.communicating_files {
