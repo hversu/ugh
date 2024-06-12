@@ -11,6 +11,12 @@ takes .graphm file, return lean.json and rich.json
 
 `cargo run maltego.graphml`
 
+if you add a mysecret.rs with a Virus Total API Key, you can do:
+
+`cargo run <indicator> vtapi`
+
+accepted indicators are domains, ips, and hashes.
+
 supports:
 - Maltego
 - VirusTotal Graph
