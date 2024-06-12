@@ -13,10 +13,11 @@ takes .graphm file, return lean.json and rich.json
 
 supports:
 - Maltego
+- VirusTotal Graph
 
 hoping to support:
 - Vertex Synapse
-- VirusTotal Graph
+- Relational Data
 - Unstructured Data
 
 ## add_hyperedges
