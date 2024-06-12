@@ -4,6 +4,7 @@ use std::error::Error;
 use std::fs::File;
 use std::io::Read;
 
+use crate::input_type::is_file;
 use crate::types::{Node, Edge};
 
 #[derive(Deserialize, Debug)]
@@ -51,16 +52,24 @@ struct DnsRecord {
 }
 
 pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn Error>> {
-    let mut file = File::open(filename)?;
-    let mut data = String::new();
-    file.read_to_string(&mut data)?;
+    
+    let data: String;
 
+    if is_file(filename) {
+        let mut file = File::open(&filename)?;
+        let mut file_data = String::new();
+        file.read_to_string(&mut file_data)?;
+        data = file_data;
+    } else { // direct data
+        data = filename.to_string();
+    }
+    println!("Phase 0");
     let json_input: JsonInput = serde_json::from_str(&data)?;
-
+    println!("Phase 1");
     let threat_query = json_input.identity_and_verdict.threat.query;
     let mut nodes = Vec::new();
     let mut edges = Vec::new();
-
+    println!("Phase 2");
     // Add the threat node with properties
     let mut threat_props = HashMap::new();
     if let Some(whois) = &json_input.identity_and_verdict.whois {

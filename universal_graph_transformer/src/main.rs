@@ -7,8 +7,11 @@ mod vt_parser;
 mod transform;
 mod input_type;
 mod types;
+mod vt_api;
+mod mysecret;
 
-fn main() {
+#[tokio::main]
+async fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 2 {
@@ -23,7 +26,7 @@ fn main() {
         "auto"
     };
 
-    match transform_graph(input, mode) {
+    match transform_graph(input, mode).await {
         Ok(_) => println!("Transformation successful!"),
         Err(e) => eprintln!("An error occurred: {}", e),
     }
