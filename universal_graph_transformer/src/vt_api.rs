@@ -15,8 +15,6 @@ use base64::encode_config;
 use base64::URL_SAFE_NO_PAD;
 use crate::mysecret::VTAPI;
 
-// pub const VTAPI: &str = "YOUR_API_KEY_HERE"; // Replace with your VirusTotal API key
-
 #[derive(Debug)]
 pub struct VTClient {
     client: reqwest::Client,
@@ -39,37 +37,40 @@ impl VTClient {
         }
     }
 
-    pub async fn call_vt_hal(&self, indicator: &str, item_type: Option<&str>) -> Result<VTData, Box<dyn Error>> {
+    pub async fn call_vt_hal(&self, indicator: &str, item_type: Option<&str>) -> Result<String, Box<dyn Error>> {
         let item_type = match item_type {
             Some(t) => t.to_string(),
             None => self.check_string(indicator),
         };
 
         if item_type == "unknown" {
-            return Ok(VTData { 
-                threat: Some(Threat {
-                    query: None,
-                    last_seen: None,
-                    label: None,
-                    family: None,
-                    judgment: None,
-                    reputation: None,
-                    verdicts: None,
-                    jarm: None,
-                    tags: None,
-                }), 
-                technical: None, 
-                relationships: None, 
-                whois: None 
-            });
+            let vt_data = JsonInput {
+                identity_and_verdict: IdentityAndVerdict {
+                    threat: Threat {
+                        query: indicator.to_string(),
+                        last_seen: None,
+                        label: None,
+                        family: None,
+                        judgment: None,
+                        reputation: None,
+                        verdicts: None,
+                        jarm: None,
+                        tags: None,
+                    },
+                    whois: None,
+                },
+                activity_and_relationships: None,
+            };
+
+            return Ok(serde_json::to_string(&vt_data)?);
         }
 
         let vt_data = self.quick_crawl(&item_type, indicator).await?;
-        // println!("{:?}", vt_data);
-        Ok(vt_data)
+        // println!("{:?}",vt_data);
+        Ok(serde_json::to_string(&vt_data)?)
     }
 
-    async fn quick_crawl(&self, item_type: &str, id: &str) -> Result<VTData, Box<dyn Error>> {
+    async fn quick_crawl(&self, item_type: &str, id: &str) -> Result<JsonInput, Box<dyn Error>> {
         let relations = self.define_relationships(item_type);
         let id_encoded = if item_type == "urls" {
             encode_config(id, URL_SAFE_NO_PAD)
@@ -101,11 +102,11 @@ impl VTClient {
         Ok(result)
     }
 
-    async fn extract_data(&self, object: Value, id: &str) -> Result<VTData, Box<dyn Error>> {
+    async fn extract_data(&self, object: Value, id: &str) -> Result<JsonInput, Box<dyn Error>> {
         let data = object.get("data").ok_or("No data field in response")?;
 
         let threat = Threat {
-            query: Some(id.to_string()),
+            query: id.to_string(),
             last_seen: data.get("attributes")
                 .and_then(|attrs| attrs.get("last_submission_date"))
                 .map(|v| Utc.timestamp_opt(v.as_i64().unwrap_or(0), 0))
@@ -122,25 +123,6 @@ impl VTClient {
             tags: data.get("attributes").and_then(|attrs| attrs.get("tags")).map(|v| v.as_array().unwrap().iter().map(|tag| tag.as_str().unwrap().to_string()).collect()),
         };
 
-        let technical = Technical {
-            exif: data.get("attributes").and_then(|attrs| attrs.get("exiftool")).cloned(),
-            names: data.get("attributes").and_then(|attrs| attrs.get("names")).map(|names| names.as_array().unwrap().iter().map(|name| name.as_str().unwrap().to_string()).collect()),
-            sigma_analysis: data.get("attributes").and_then(|attrs| attrs.get("sigma_analysis_results")).cloned(),
-        };
-
-        let relationships = Relationships {
-            c2: data.get("attributes").and_then(|attrs| attrs.get("malware_config")).and_then(|mc| mc.get("c2")).cloned(),
-            c2url: data.get("attributes").and_then(|attrs| attrs.get("malware_config")).and_then(|mc| mc.get("c2urls")).map(|urls| urls.as_array().unwrap().iter().map(|url| url.as_str().unwrap_or("").to_string()).collect()),
-            registrar: data.get("attributes").and_then(|attrs| attrs.get("registrar")).map(|v| v.as_str().unwrap_or("").to_string()),
-            dns: data.get("attributes").and_then(|attrs| attrs.get("last_dns_records")).cloned(),
-            https_certificate: Some(serde_json::json!({
-                "subject": data.get("attributes").and_then(|attrs| attrs.get("last_https_certificate")).and_then(|cert| cert.get("subject")).map(|v| v.as_str().unwrap_or("").to_string()),
-                "issuer": data.get("attributes").and_then(|attrs| attrs.get("last_https_certificate")).and_then(|cert| cert.get("issuer")).map(|v| v.as_str().unwrap_or("").to_string()),
-                "expiry": data.get("attributes").and_then(|attrs| attrs.get("last_https_certificate")).and_then(|cert| cert.get("not_after")).map(|v| v.as_str().unwrap_or("").to_string())
-            })),
-            related_items: Some(self.extract_relationships(&object).await?),
-        };
-
         let raw_whois = data.get("attributes").and_then(|attrs| attrs.get("whois")).map(|v| v.as_str().unwrap_or("").to_string());
         let whois_details = if let Some(raw_whois) = raw_whois {
             let mut details = HashMap::new();
@@ -153,15 +135,30 @@ impl VTClient {
         } else {
             None
         };
-        let whois = Whois {
-            details: whois_details,
+
+        let relationships = self.extract_relationships(&object).await?;
+        let related_items = RelatedItems {
+            communicating_files: relationships.get("communicating_files").cloned(),
+            contacted_ips: relationships.get("contacted_ips").cloned(),
+            contacted_domains: relationships.get("contacted_domains").cloned(),
+            resolves_to: relationships.get("resolutions").map(|res| res.iter().map(|r| ResolveRelationship {
+                domain: r.clone(),
+                ip: id.to_string(),  // Assuming 'id' is the IP here. Adjust as needed.
+            }).collect()),
         };
 
-        Ok(VTData {
-            threat: Some(threat),
-            technical: Some(technical),
-            relationships: Some(relationships),
-            whois: Some(whois),
+        Ok(JsonInput {
+            identity_and_verdict: IdentityAndVerdict {
+                threat: threat,
+                whois: whois_details,
+            },
+            activity_and_relationships: Some(ActivityAndRelationships {
+                related_items: related_items,
+                dns: data.get("attributes").and_then(|attrs| attrs.get("last_dns_records")).map(|dns| dns.as_array().unwrap().iter().map(|record| DnsRecord {
+                    record_type: record.get("type").unwrap().as_str().unwrap().to_string(),
+                    value: record.get("value").unwrap().as_str().unwrap().to_string(),
+                }).collect()),
+            }),
         })
     }
 
@@ -179,8 +176,8 @@ impl VTClient {
 
     fn define_relationships(&self, item_type: &str) -> String {
         match item_type {
-            "files" => "collections,contacted_ips,contacted_urls,contacted_domains,itw_domains,itw_urls,itw_ips".to_string(),
-            "ip_addresses" | "domains" => "collections,communicating_files,referrer_files,resolutions,downloaded_files".to_string(),
+            "files" => "collections,communicating_files,contacted_ips,contacted_urls,contacted_domains,itw_domains,itw_urls,itw_ips".to_string(),
+            "ip_addresses" | "domains" => "collections,communicating_files,resolutions,referrer_files,resolutions,downloaded_files".to_string(),
             "urls" => "collections,communicating_files,referrer_files,downloaded_files".to_string(),
             _ => {
                 println!("Warning: no relations defined for file type");
@@ -210,16 +207,20 @@ impl VTClient {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
-pub struct VTData {
-    pub threat: Option<Threat>,
-    pub technical: Option<Technical>,
-    pub relationships: Option<Relationships>,
-    pub whois: Option<Whois>,
+pub struct JsonInput {
+    pub identity_and_verdict: IdentityAndVerdict,
+    pub activity_and_relationships: Option<ActivityAndRelationships>,
+}
+
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
+pub struct IdentityAndVerdict {
+    pub threat: Threat,
+    pub whois: Option<HashMap<String, String>>,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
 pub struct Threat {
-    pub query: Option<String>,
+    pub query: String,
     pub last_seen: Option<String>,
     pub label: Option<String>,
     pub family: Option<Value>,
@@ -231,23 +232,28 @@ pub struct Threat {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
-pub struct Technical {
-    pub exif: Option<Value>,
-    pub names: Option<Vec<String>>,
-    pub sigma_analysis: Option<Value>,
+pub struct ActivityAndRelationships {
+    pub related_items: RelatedItems,
+    pub dns: Option<Vec<DnsRecord>>,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
-pub struct Relationships {
-    pub c2: Option<Value>,
-    pub c2url: Option<Vec<String>>,
-    pub registrar: Option<String>,
-    pub dns: Option<Value>,
-    pub https_certificate: Option<Value>,
-    pub related_items: Option<HashMap<String, Vec<String>>>,
+pub struct RelatedItems {
+    pub communicating_files: Option<Vec<String>>,
+    pub contacted_ips: Option<Vec<String>>,
+    pub contacted_domains: Option<Vec<String>>,
+    pub resolves_to: Option<Vec<ResolveRelationship>>,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
-pub struct Whois {
-    pub details: Option<HashMap<String, String>>,
+pub struct ResolveRelationship {
+    pub domain: String,
+    pub ip: String,
+}
+
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
+pub struct DnsRecord {
+    #[serde(rename = "type")]
+    pub record_type: String,
+    pub value: String,
 }

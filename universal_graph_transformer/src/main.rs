@@ -7,7 +7,6 @@ mod vt_parser;
 mod transform;
 mod input_type;
 mod types;
-mod iops;
 mod vt_api;
 mod mysecret;
 
