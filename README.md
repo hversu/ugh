@@ -1,6 +1,6 @@
 # ugh... (universal graph harness)!
 
-a set of tools for casting "any" data to an efficient universal, graph structures
+a set of tools for casting "any" data to efficient universal, graph structures
 
 - **univeresal graph transformer** to tranform multiple data sources to the universal data format
 - **add hyperedges** to define, find and add hyperedges
