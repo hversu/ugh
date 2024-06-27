@@ -63,13 +63,13 @@ pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
     } else { // direct data
         data = filename.to_string();
     }
-    println!("Phase 0");
+
     let json_input: JsonInput = serde_json::from_str(&data)?;
-    println!("Phase 1");
+
     let threat_query = json_input.identity_and_verdict.threat.query;
     let mut nodes = Vec::new();
     let mut edges = Vec::new();
-    println!("Phase 2");
+
     // Add the threat node with properties
     let mut threat_props = HashMap::new();
     if let Some(whois) = &json_input.identity_and_verdict.whois {
