@@ -3,5 +3,4 @@ lean.json
 rich.json
 systembc.graphml
 Cargo.lock
-*_example.json
 mysecret.rs
