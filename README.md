@@ -20,7 +20,7 @@ to support:
 
 takes .graphm file, return lean.json and rich.json
 
-`cargo run maltego.graphml`
+`cargo run ..\example_data\netsupp_2806.graphml`
 
 if you add a mysecret.rs with a Virus Total API Key, you can do:
 
