@@ -28,6 +28,9 @@ if you add a mysecret.rs with a Virus Total API Key, you can do:
 
 verified indicators are domains, ips, and hashes.
 
+or you can use the example jsons that use an intermediate data deifnition for VT data for testing if you don't have a key:
+
+` cargo run ..\example_data\vt_domain_example.json`
 
 ## add_hyperedges
 find and add hyperedges converted graph (e.g. `rich.json`)
