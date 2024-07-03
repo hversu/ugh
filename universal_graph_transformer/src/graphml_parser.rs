@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufReader};
 use std::error::Error;
-use crate::types::{Node, Edge};
+use crate::types::{Node, Edge, Properties};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct GraphML {
@@ -44,10 +44,10 @@ pub fn parse_graphml(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
 
                             if key == "id" {
                                 current_node = Some(Node {
-                                    id: value,
+                                    id: Properties::get_id_from_str(&value),
                                     label: "Unnamed Node".to_string(),
                                     node_type: "unknown".to_string(),
-                                    properties: properties.clone(),
+                                    properties: Properties::map_values(properties.clone()),
                                 });
                             }
                         }
@@ -79,7 +79,7 @@ pub fn parse_graphml(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
                             source,
                             target,
                             relation_type: if relation_type.is_empty() { "linked_to".to_string() } else { relation_type },
-                            properties: properties.clone(),
+                            properties: Properties::map_values(properties.clone()),
                         });
                     }
                     b"mtg:Property" => {

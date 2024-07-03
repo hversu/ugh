@@ -5,7 +5,7 @@ use std::fs::File;
 use std::io::Read;
 
 use crate::input_type::is_file;
-use crate::types::{Node, Edge};
+use crate::types::{Node, Edge, Properties};
 
 #[derive(Deserialize, Debug)]
 struct JsonInput {
@@ -52,7 +52,7 @@ struct DnsRecord {
 }
 
 pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn Error>> {
-    
+
     let data: String;
 
     if is_file(filename) {
@@ -78,27 +78,27 @@ pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
         }
     }
     nodes.push(Node {
-        id: threat_query.clone(),
+        id: Properties::get_id_from_str(&threat_query),
         label: threat_query.clone(),
         node_type: "threat".to_string(),
-        properties: threat_props,
+        properties: Properties::map_values(threat_props)
     });
 
     if let Some(activity) = json_input.activity_and_relationships {
         if let Some(communicating_files) = activity.related_items.communicating_files {
             for file in communicating_files {
                 nodes.push(Node {
-                    id: file.clone(),
+                    id: Properties::get_id_from_str(&file),
                     label: "Communicating File".to_string(),
                     node_type: "file".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
 
                 edges.push(Edge {
                     source: threat_query.clone(),
                     target: file,
                     relation_type: "communicates_with".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
             }
         }
@@ -106,17 +106,17 @@ pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
         if let Some(contacted_ips) = activity.related_items.contacted_ips {
             for ip in contacted_ips {
                 nodes.push(Node {
-                    id: ip.clone(),
+                    id: Properties::get_id_from_str(&ip),
                     label: "Contacted IP".to_string(),
                     node_type: "ip".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
 
                 edges.push(Edge {
                     source: threat_query.clone(),
                     target: ip,
                     relation_type: "contacted".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
             }
         }
@@ -124,17 +124,17 @@ pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
         if let Some(contacted_domains) = activity.related_items.contacted_domains {
             for domain in contacted_domains {
                 nodes.push(Node {
-                    id: domain.clone(),
+                    id: Properties::get_id_from_str(&domain),
                     label: "Contacted Domain".to_string(),
                     node_type: "domain".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
 
                 edges.push(Edge {
                     source: threat_query.clone(),
                     target: domain,
                     relation_type: "contacted".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
             }
         }
@@ -142,22 +142,22 @@ pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
         if let Some(resolutions) = activity.related_items.resolves_to {
             for resolution in resolutions {
                 nodes.push(Node {
-                    id: resolution.domain.clone(),
+                    id: Properties::get_id_from_str(&resolution.domain),
                     label: "Resolved Domain".to_string(),
                     node_type: "domain".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
                 nodes.push(Node {
-                    id: resolution.ip.clone(),
+                    id: Properties::get_id_from_str(&resolution.ip),
                     label: "Resolved IP".to_string(),
                     node_type: "ip".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
                 edges.push(Edge {
                     source: resolution.domain.clone(),
                     target: resolution.ip.clone(),
                     relation_type: "resolves_to".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
             }
         }
@@ -165,17 +165,17 @@ pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
         if let Some(dns_records) = activity.dns {
             for dns_record in dns_records {
                 nodes.push(Node {
-                    id: dns_record.value.clone(),
+                    id: Properties::get_id_from_str(&dns_record.value),
                     label: dns_record.record_type.clone(),
                     node_type: "dns".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
 
                 edges.push(Edge {
                     source: threat_query.clone(),
                     target: dns_record.value.clone(),
                     relation_type: "has_dns".to_string(),
-                    properties: HashMap::new(),
+                    properties: Properties::new(),
                 });
             }
         }
