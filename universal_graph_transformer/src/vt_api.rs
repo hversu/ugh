@@ -13,7 +13,7 @@ use std::collections::HashMap;
 use std::error::Error;
 use base64::encode_config;
 use base64::URL_SAFE_NO_PAD;
-use crate::mysecret::VTAPI;
+use crate::my_secret::VTAPI;
 
 #[derive(Debug)]
 pub struct VTClient {
