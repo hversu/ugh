@@ -1,1 +1,1 @@
-pub const VTAPI: &str = "insert_api_here"
+pub const VTAPI: &str = "insert_api_here";
