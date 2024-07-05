@@ -2,8 +2,8 @@ use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 
-mod mysecret;
-use crate::mysecret::API_KEY_VAR;
+mod my_secret;
+use crate::my_secret::API_KEY_VAR;
 
 #[derive(Debug, Serialize)]
 struct ChatRequest {
