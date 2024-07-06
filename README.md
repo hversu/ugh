@@ -10,11 +10,11 @@ supports:
 - VirusTotal Graph
 
 in progress:
-- Relational Data
+- Unstructured Data
 
 to support:
 - Vertex Synapse
-- Unstructured Data
+- Relational Data
 
 ## universal_graph_transformer
 
