@@ -6,3 +6,6 @@ Cargo.lock
 mysecret.rs
 .DS_Store
 .idea
+.env
+target
+.vscode

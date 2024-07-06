@@ -113,3 +113,77 @@ impl<'a> IntoIterator for &'a Properties {
         self.other.iter()
     }
 }
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_properties_new() {
+        let props = Properties::new();
+        assert_eq!(props.id, None);
+        assert_eq!(props.other.len(), 0);
+    }
+
+    #[test]
+    fn test_properties_map_values() {
+        let mut props = HashMap::new();
+        props.insert("id".to_string(), "1".to_string());
+        props.insert("label".to_string(), "Node 1".to_string());
+        props.insert("type".to_string(), "unknown".to_string());
+        let properties = Properties::map_values(props);
+        assert_eq!(properties.id, Some(1));
+        assert_eq!(properties.other.len(), 2);
+    }
+
+    #[test]
+    fn test_properties_get() {
+        let mut props = Properties::new();
+        props.insert("label".to_string(), "Node 1".to_string());
+        assert_eq!(props.get("label"), Some(&"Node 1".to_string()));
+    }
+
+    #[test]
+    fn test_properties_insert() {
+        let mut props = Properties::new();
+        props.insert("label".to_string(), "Node 1".to_string());
+        assert_eq!(props.other.len(), 1);
+    }
+
+    #[test]
+    fn test_properties_remove() {
+        let mut props = Properties::new();
+        props.insert("label".to_string(), "Node 1".to_string());
+        assert_eq!(props.remove("label"), Some("Node 1".to_string()));
+        assert_eq!(props.other.len(), 0);
+    }
+
+    #[test]
+    fn test_properties_set_id() {
+        let mut props = Properties::new();
+        props.set_id(1);
+        assert_eq!(props.id, Some(1));
+    }
+
+    #[test]
+    fn test_properties_get_id() {
+        let mut props = Properties::new();
+        props.set_id(1);
+        assert_eq!(props.get_id(), Some(1));
+    }
+
+    #[test]
+    fn test_properties_set_id_from_str() {
+        let mut props = Properties::new();
+        props.set_id_from_str("1");
+        assert_eq!(props.id, Some(1));
+    }
+
+    #[test]
+    fn test_properties_get_id_as_str() {
+        let mut props = Properties::new();
+        props.set_id(1);
+        assert_eq!(props.get_id_as_str(), Some("1".to_string()));
+    }
+}
