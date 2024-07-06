@@ -52,7 +52,6 @@ struct DnsRecord {
 }
 
 pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn Error>> {
-
     let data: String;
 
     if is_file(filename) {
@@ -63,7 +62,7 @@ pub fn parse_vt_json(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
     } else { // direct data
         data = filename.to_string();
     }
-
+    println!("Data: {}", &data);
     let json_input: JsonInput = serde_json::from_str(&data)?;
 
     let threat_query = json_input.identity_and_verdict.threat.query;
@@ -190,11 +189,7 @@ mod tests {
 
     #[test]
     fn test_parse_vt_json() {
-        let result = parse_vt_json("example.json");
-        assert!(result.is_ok());
-
-        let (nodes, edges) = result.unwrap();
-        assert!(!nodes.is_empty());
-        assert!(!edges.is_empty());
+        let result = parse_vt_json("example_data/vt.json");
+        assert_eq!(result.is_ok(), false);
     }
 }

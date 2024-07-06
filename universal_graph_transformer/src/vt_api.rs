@@ -1,19 +1,19 @@
-extern crate reqwest;
-extern crate regex;
-extern crate serde;
-extern crate serde_json;
 extern crate base64;
 extern crate chrono;
+extern crate regex;
+extern crate reqwest;
+extern crate serde;
+extern crate serde_json;
 
-use reqwest::header::{HeaderMap, HeaderValue};
-use regex::Regex;
-use serde_json::Value;
-use chrono::{Utc, TimeZone};
-use std::collections::HashMap;
-use std::error::Error;
+use crate::mysecret::get_vtapi;
 use base64::encode_config;
 use base64::URL_SAFE_NO_PAD;
-use crate::my_secret::VTAPI;
+use chrono::{TimeZone, Utc};
+use regex::Regex;
+use reqwest::header::{HeaderMap, HeaderValue};
+use serde_json::Value;
+use std::collections::HashMap;
+use std::error::Error;
 
 #[derive(Debug)]
 pub struct VTClient {
@@ -25,7 +25,7 @@ pub struct VTClient {
 impl VTClient {
     pub fn new() -> Self {
         let mut headers = HeaderMap::new();
-        headers.insert("x-apikey", HeaderValue::from_static(VTAPI));
+        headers.insert("x-apikey", HeaderValue::from_static(get_vtapi()));
 
         let mut params = HashMap::new();
         params.insert("limit", "10");
@@ -37,7 +37,11 @@ impl VTClient {
         }
     }
 
-    pub async fn call_vt_hal(&self, indicator: &str, item_type: Option<&str>) -> Result<String, Box<dyn Error>> {
+    pub async fn call_vt_hal(
+        &self,
+        indicator: &str,
+        item_type: Option<&str>,
+    ) -> Result<String, Box<dyn Error>> {
         let item_type = match item_type {
             Some(t) => t.to_string(),
             None => self.check_string(indicator),
@@ -89,14 +93,24 @@ impl VTClient {
     }
 
     async fn query_handler(&self, url: &str) -> Result<Value, Box<dyn Error>> {
-        let response = self.client.get(url).headers(self.headers.clone()).query(&self.params).send().await?;
+        let response = self
+            .client
+            .get(url)
+            .headers(self.headers.clone())
+            .query(&self.params)
+            .send()
+            .await?;
         let result = response.json::<Value>().await?;
 
         if result.get("error").is_some() {
             return Err(format!(
                 "Error: {}",
-                result.get("error").and_then(|v| v.get("message")).unwrap_or(&Value::String("Unknown error".to_string()))
-            ).into());
+                result
+                    .get("error")
+                    .and_then(|v| v.get("message"))
+                    .unwrap_or(&Value::String("Unknown error".to_string()))
+            )
+            .into());
         }
 
         Ok(result)
@@ -107,23 +121,68 @@ impl VTClient {
 
         let threat = Threat {
             query: id.to_string(),
-            last_seen: data.get("attributes")
+            last_seen: data
+                .get("attributes")
                 .and_then(|attrs| attrs.get("last_submission_date"))
                 .map(|v| Utc.timestamp_opt(v.as_i64().unwrap_or(0), 0))
                 .and_then(|local_result| match local_result {
                     chrono::LocalResult::None => None,
                     chrono::LocalResult::Single(datetime) => Some(datetime.to_rfc3339()),
-                    chrono::LocalResult::Ambiguous(_, _) => None,}), // Handle ambiguous cases if needed
-            label: data.get("attributes").and_then(|attrs| attrs.get("popular_threat_classification")).and_then(|ptc| ptc.get("suggested_threat_label")).map(|v| v.as_str().unwrap_or("").to_string()),
-            family: data.get("attributes").and_then(|attrs| attrs.get("malware_config")).and_then(|mc| mc.get("family")).cloned(),
-            judgment: Some(Value::Array(data.get("attributes").and_then(|attrs| attrs.get("last_analysis_results")).unwrap_or(&Value::Null).as_object().unwrap_or(&serde_json::Map::new()).iter().filter(|(_, v)| v.get("category").map(|cat| cat == "malicious").unwrap_or(false)).map(|(k, _)| Value::String(k.clone())).collect())),
-            reputation: data.get("attributes").and_then(|attrs| attrs.get("reputation")).map(|v| v.as_i64().unwrap_or(0)),
-            verdicts: data.get("attributes").and_then(|attrs| attrs.get("sandbox_verdict")).cloned(),
-            jarm: data.get("attributes").and_then(|attrs| attrs.get("jarn")).map(|v| v.as_str().unwrap_or("").to_string()),
-            tags: data.get("attributes").and_then(|attrs| attrs.get("tags")).map(|v| v.as_array().unwrap().iter().map(|tag| tag.as_str().unwrap().to_string()).collect()),
+                    chrono::LocalResult::Ambiguous(_, _) => None,
+                }), // Handle ambiguous cases if needed
+            label: data
+                .get("attributes")
+                .and_then(|attrs| attrs.get("popular_threat_classification"))
+                .and_then(|ptc| ptc.get("suggested_threat_label"))
+                .map(|v| v.as_str().unwrap_or("").to_string()),
+            family: data
+                .get("attributes")
+                .and_then(|attrs| attrs.get("malware_config"))
+                .and_then(|mc| mc.get("family"))
+                .cloned(),
+            judgment: Some(Value::Array(
+                data.get("attributes")
+                    .and_then(|attrs| attrs.get("last_analysis_results"))
+                    .unwrap_or(&Value::Null)
+                    .as_object()
+                    .unwrap_or(&serde_json::Map::new())
+                    .iter()
+                    .filter(|(_, v)| {
+                        v.get("category")
+                            .map(|cat| cat == "malicious")
+                            .unwrap_or(false)
+                    })
+                    .map(|(k, _)| Value::String(k.clone()))
+                    .collect(),
+            )),
+            reputation: data
+                .get("attributes")
+                .and_then(|attrs| attrs.get("reputation"))
+                .map(|v| v.as_i64().unwrap_or(0)),
+            verdicts: data
+                .get("attributes")
+                .and_then(|attrs| attrs.get("sandbox_verdict"))
+                .cloned(),
+            jarm: data
+                .get("attributes")
+                .and_then(|attrs| attrs.get("jarn"))
+                .map(|v| v.as_str().unwrap_or("").to_string()),
+            tags: data
+                .get("attributes")
+                .and_then(|attrs| attrs.get("tags"))
+                .map(|v| {
+                    v.as_array()
+                        .unwrap()
+                        .iter()
+                        .map(|tag| tag.as_str().unwrap().to_string())
+                        .collect()
+                }),
         };
 
-        let raw_whois = data.get("attributes").and_then(|attrs| attrs.get("whois")).map(|v| v.as_str().unwrap_or("").to_string());
+        let raw_whois = data
+            .get("attributes")
+            .and_then(|attrs| attrs.get("whois"))
+            .map(|v| v.as_str().unwrap_or("").to_string());
         let whois_details = if let Some(raw_whois) = raw_whois {
             let mut details = HashMap::new();
             for line in raw_whois.lines() {
@@ -141,10 +200,14 @@ impl VTClient {
             communicating_files: relationships.get("communicating_files").cloned(),
             contacted_ips: relationships.get("contacted_ips").cloned(),
             contacted_domains: relationships.get("contacted_domains").cloned(),
-            resolves_to: relationships.get("resolutions").map(|res| res.iter().map(|r| ResolveRelationship {
-                domain: r.clone(),
-                ip: id.to_string(),  // Assuming 'id' is the IP here. Adjust as needed.
-            }).collect()),
+            resolves_to: relationships.get("resolutions").map(|res| {
+                res.iter()
+                    .map(|r| ResolveRelationship {
+                        domain: r.clone(),
+                        ip: id.to_string(), // Assuming 'id' is the IP here. Adjust as needed.
+                    })
+                    .collect()
+            }),
         };
 
         Ok(JsonInput {
@@ -154,20 +217,48 @@ impl VTClient {
             },
             activity_and_relationships: Some(ActivityAndRelationships {
                 related_items: related_items,
-                dns: data.get("attributes").and_then(|attrs| attrs.get("last_dns_records")).map(|dns| dns.as_array().unwrap().iter().map(|record| DnsRecord {
-                    record_type: record.get("type").unwrap().as_str().unwrap().to_string(),
-                    value: record.get("value").unwrap().as_str().unwrap().to_string(),
-                }).collect()),
+                dns: data
+                    .get("attributes")
+                    .and_then(|attrs| attrs.get("last_dns_records"))
+                    .map(|dns| {
+                        dns.as_array()
+                            .unwrap()
+                            .iter()
+                            .map(|record| DnsRecord {
+                                record_type: record
+                                    .get("type")
+                                    .unwrap()
+                                    .as_str()
+                                    .unwrap()
+                                    .to_string(),
+                                value: record.get("value").unwrap().as_str().unwrap().to_string(),
+                            })
+                            .collect()
+                    }),
             }),
         })
     }
 
-    async fn extract_relationships(&self, result: &Value) -> Result<HashMap<String, Vec<String>>, Box<dyn Error>> {
+    async fn extract_relationships(
+        &self,
+        result: &Value,
+    ) -> Result<HashMap<String, Vec<String>>, Box<dyn Error>> {
         let mut relationships = HashMap::new();
-        let data = result.get("data").ok_or("No data field in response")?.get("relationships").ok_or("No relationships field in data")?;
+        let data = result
+            .get("data")
+            .ok_or("No data field in response")?
+            .get("relationships")
+            .ok_or("No relationships field in data")?;
 
         for (key, value) in data.as_object().unwrap() {
-            let ids: Vec<String> = value.get("data").unwrap().as_array().unwrap().iter().map(|entry| entry.get("id").unwrap().as_str().unwrap().to_string()).collect();
+            let ids: Vec<String> = value
+                .get("data")
+                .unwrap()
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|entry| entry.get("id").unwrap().as_str().unwrap().to_string())
+                .collect();
             relationships.insert(key.clone(), ids);
         }
 
@@ -189,8 +280,11 @@ impl VTClient {
     fn check_string(&self, input: &str) -> String {
         let hash_regex = Regex::new(r"^[a-fA-F0-9]{32,64}$").unwrap();
         let ip_regex = Regex::new(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$").unwrap();
-        let domain_regex = Regex::new(r"^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$").unwrap();
-        let url_regex = Regex::new(r"^(http|https)://[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})(/.*)*$").unwrap();
+        let domain_regex =
+            Regex::new(r"^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$").unwrap();
+        let url_regex =
+            Regex::new(r"^(http|https)://[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})(/.*)*$")
+                .unwrap();
 
         if hash_regex.is_match(input) {
             "files".to_string()
@@ -256,4 +350,16 @@ pub struct DnsRecord {
     #[serde(rename = "type")]
     pub record_type: String,
     pub value: String,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn test_call_vt_hal() {
+        let vt = VTClient::new();
+        let result = vt.call_vt_hal("example.com", Some("domains")).await;
+        assert!(result.is_err());
+    }
 }

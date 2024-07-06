@@ -149,3 +149,21 @@ pub fn parse_graphml(filename: &str) -> Result<(Vec<Node>, Vec<Edge>), Box<dyn E
 
     Ok((nodes, edges))
 }
+
+#[cfg(test)]
+mod graphml_parser_tests {
+    use super::*;
+
+    #[test]
+    fn test_parse_graphml() {
+        let (nodes, edges) = parse_graphml("../example_data/netsupp_2806.graphml").unwrap();
+        assert_eq!(nodes.len(), 78);
+        assert_eq!(edges.len(), 71);
+    }
+
+    #[test]
+    fn test_parse_graphml_with_invalid_file() {
+        let result = parse_graphml("invalid_file.graphml");
+        assert!(result.is_err());
+    }
+}

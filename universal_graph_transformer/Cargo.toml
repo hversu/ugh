@@ -1,7 +1,11 @@
 [package]
-name = "universal_data_transformer"
+name = "universal_graph_transformer"
 version = "0.1.0"
 edition = "2021"
+
+[[bin]]
+name = "universal_graph_transformer"
+path = "src/lib.rs"
 
 [dependencies]
 quick-xml = { version = "0.31.0", features = ["encoding"] }
@@ -12,3 +16,5 @@ regex = "1.0"
 base64 = "0.13"
 chrono = "0.4"
 tokio = { version = "1", features = ["full"] }
+dotenv = "0.15.0"
+lazy_static = "1.4.0"

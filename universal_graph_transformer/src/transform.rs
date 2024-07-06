@@ -49,3 +49,14 @@ fn save_json<T: Serialize>(data: &T, filename: &str) -> Result<(), Box<dyn Error
     serde_json::to_writer_pretty(writer, data)?;
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test] // Or #[async_std::test] if you are using async-std
+    async fn test_transform_graph() {
+        let result = transform_graph("../example_data/netsupp_2806.graphml", "auto").await;
+        assert_eq!(result.is_ok(), true);
+    }
+}
