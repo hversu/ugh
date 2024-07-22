@@ -10,7 +10,7 @@ supports:
 - VirusTotal Graph
 
 in progress:
-- Unstructured Data
+- Unstructured Data (https://github.com/hversu/collector)
 
 to support:
 - Vertex Synapse
