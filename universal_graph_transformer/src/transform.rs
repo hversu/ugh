@@ -1,14 +1,18 @@
+use crate::graphml_parser::parse_graphml;
+use crate::input_type::is_file;
+use crate::types::Graph;
+use crate::vt_api::VTClient;
+use crate::vt_parser::parse_vt_json;
 use serde::Serialize;
+use std::error::Error;
 use std::fs::File;
 use std::io::BufWriter;
-use std::error::Error;
-use crate::graphml_parser::parse_graphml;
-use crate::vt_parser::parse_vt_json;
-use crate::input_type::is_file;
-use crate::types::{Graph};
-use crate::vt_api::VTClient;
 
-pub async fn transform_graph(input: &str, mode: &str) -> Result<(), Box<dyn Error>> {
+pub async fn transform_graph(
+    input: &str,
+    mode: &str,
+    output_path: &str,
+) -> Result<(), Box<dyn Error>> {
     let (nodes, edges) = if mode == "auto" {
         if is_file(input) {
             if input.ends_with(".graphml") || input.ends_with(".maltego") {
@@ -38,7 +42,7 @@ pub async fn transform_graph(input: &str, mode: &str) -> Result<(), Box<dyn Erro
 
     let rich_graph = Graph { nodes, edges };
 
-    save_json(&rich_graph, "rich.json")?;
+    save_json(&rich_graph, output_path)?;
 
     Ok(())
 }

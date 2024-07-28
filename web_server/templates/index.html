@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Interface</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        #sidebar {
+            width: 250px;
+            background: #34495e;
+            color: #ecf0f1;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            transition: width 0.3s;
+            z-index: 1000;
+        }
+        #sidebar.collapsed {
+            width: 60px;
+        }
+        #sidebar button, #sidebar .submenu button {
+            background: #34495e;
+            border: none;
+            color: #ecf0f1;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            border-radius: 4px;
+            transition: background 0.3s, padding 0.3s;
+        }
+        #sidebar button:hover, #sidebar .submenu button:hover {
+            background: #1abc9c;
+        }
+        #sidebar #toggle-btn {
+            background: #1abc9c;
+            text-align: center;
+            padding: 8px;
+        }
+        .submenu {
+            display: none;
+            flex-direction: column;
+            margin-left: 15px;
+            border-left: 2px solid #1abc9c;
+            padding-left: 10px;
+        }
+        #sidebar.collapsed .submenu {
+            display: none !important;
+        }
+        #sidebar.collapsed button {
+            padding: 10px 5px;
+        }
+        #main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        #mode-bar {
+            background: #ecf0f1;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #mode-bar button {
+            background: #3498db;
+            border: none;
+            color: #ecf0f1;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        #mode-bar button:hover {
+            background: #2980b9;
+        }
+        #graph-container {
+            flex: 1;
+            background: #ffffff;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        #right-panel {
+            width: 300px;
+            background: #ecf0f1;
+            padding: 10px;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        #right-panel .input-container, #right-panel .output-container {
+            margin-bottom: 20px;
+        }
+        #right-panel .input-container label, #right-panel .output-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        #right-panel .input-container select, #right-panel .input-container input[type="text"], #right-panel .input-container input[type="file"], #right-panel .input-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #right-panel .input-container button {
+            background: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #right-panel .input-container button:hover {
+            background: #2980b9;
+        }
+        .output-container {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 4px;
+            overflow-y: scroll;
+            max-height: 550px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        .tabs button {
+            background: none;
+            border: none;
+            color: #3498db;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px 4px 0 0;
+            transition: background 0.3s, color 0.3s;
+        }
+        .tabs button.active {
+            background: #3498db;
+            color: #fff;
+        }
+        .tabs button:hover:not(.active) {
+            background: #ecf0f1;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .hierarchy-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .hierarchy-list .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .hierarchy-list .item .text {
+            flex: 1;
+        }
+        .hierarchy-list .item button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 5px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .hierarchy-list .item button:hover {
+            background: #e74c3c;
+            color: #fff;
+        }
+        .hierarchy-list .item button.edit:hover {
+            background: #f39c12;
+            color: #fff;
+        }
+        .new-node {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .new-node input {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .new-node button {
+            background: #2ecc71;
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .new-node button:hover {
+            background: #27ae60;
+        }
+        .placeholder {
+            width: 300px;
+            height: 300px;
+            background: lightgray;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            #sidebar {
+                position: absolute;
+                height: 100%;
+                z-index: 1000;
+            }
+            #main {
+                margin-left: 60px;
+            }
+            #sidebar.collapsed {
+                width: 0;
+            }
+            #main {
+                margin-left: 0;
+            }
+            #toggle-btn {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 1001;
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/htmx.org"></script>
+</head>
+<body>
+<div id="sidebar">
+    <button id="toggle-btn" onclick="toggleSidebar()"><<</button>
+    <div>
+        <button onclick="toggleSubmenu('config-settings')">Config/Settings</button>
+        <div id="config-settings" class="submenu">
+            <button hx-get="/new" hx-target="#graph-container">New</button>
+            <button hx-get="/save" hx-target="#graph-container">Save</button>
+            <button hx-get="/load" hx-target="#graph-container">Load</button>
+            <button hx-get="/undo" hx-target="#graph-container">Undo</button>
+            <button hx-get="/redo" hx-target="#graph-container">Redo</button>
+            <button hx-get="/delete" hx-target="#graph-container">DELETE</button>
+            <button hx-get="/generate-key" hx-target="#graph-container">Generate Key</button>
+        </div>
+    </div>
+    <div>
+        <button onclick="toggleSubmenu('api-keys')">API Keys</button>
+        <div id="api-keys" class="submenu">
+            <button hx-get="/api-keys/manage" hx-target="#graph-container">Manage API Keys</button>
+        </div>
+    </div>
+</div>
+<div id="main">
+    <div id="graph-container">
+        <!-- Placeholder for the graph visualization -->
+        <div class="placeholder">Graph</div>
+    </div>
+</div>
+<div id="right-panel">
+    <div class="input-container">
+        <label for="mode">Mode</label>
+        <select id="mode">
+            <option value="auto">auto</option>
+            <option value="graphml">graphml</option>
+            <option value="maltego">maltego</option>
+            <option value="vtapi">vtapi</option>
+        </select>
+    </div>
+<!--    <div class="input-container">-->
+<!--        <label for="text-input">Text Input</label>-->
+<!--        <input type="text" id="text-input" placeholder="Enter text">-->
+<!--        <button onclick="submitText()">Submit Text</button>-->
+<!--    </div>-->
+    <div class="input-container">
+        <label for="file-input">Load .graphml File</label>
+        <input type="file" id="file-input" accept=".graphml">
+        <button onclick="uploadFile()">Upload File</button>
+    </div>
+    <div class="tabs">
+        <button class="active" onclick="showTab('hierarchy')">Hierarchy</button>
+        <button onclick="showTab('text')">Text</button>
+        <button onclick="showTab('json')">JSON</button>
+    </div>
+    <div id="hierarchy" class="tab-content active">
+        <div class="output-container" id="output">
+            <!-- Normalized output will be displayed here -->
+        </div>
+<!--        <div class="new-node">-->
+<!--            <input type="text" placeholder="New Node / Edge">-->
+<!--            <button>Add</button>-->
+<!--        </div>-->
+<!--        <div class="hierarchy-list">-->
+<!--            <div class="item">-->
+<!--                <div class="text">Node 1</div>-->
+<!--                <button class="edit">✎</button>-->
+<!--                <button class="delete">✖</button>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <div class="text">Node 2</div>-->
+<!--                <button class="edit">✎</button>-->
+<!--                <button class="delete">✖</button>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Add more items here &ndash;&gt;-->
+<!--        </div>-->
+    </div>
+    <div id="text" class="tab-content">
+        <!-- Text content here -->
+    </div>
+    <div id="json" class="tab-content">
+        <!-- JSON content here -->
+    </div>
+</div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('toggle-btn');
+        if (sidebar.classList.contains('collapsed')) {
+            sidebar.classList.remove('collapsed');
+            toggleBtn.innerText = '<<';
+        } else {
+            sidebar.classList.add('collapsed');
+            toggleBtn.innerText = '>>';
+        }
+    }
+
+    function toggleSubmenu(id) {
+        const submenu = document.getElementById(id);
+        if (submenu.style.display === 'flex') {
+            submenu.style.display = 'none';
+        } else {
+            submenu.style.display = 'flex';
+        }
+    }
+
+    function showTab(tabId) {
+        document.querySelectorAll('.tabs button').forEach(button => {
+            button.classList.remove('active');
+        });
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.remove('active');
+        });
+        document.querySelector(`.tabs button[onclick="showTab('${tabId}')"]`).classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    function submitText() {
+        const textInput = document.getElementById('text-input').value;
+        document.getElementById('output').innerText = textInput;
+    }
+
+    function loadFile() {
+        const fileInput = document.getElementById('file-input').files[0];
+        if (fileInput) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('output').innerText = e.target.result;
+            };
+            reader.readAsText(fileInput);
+        }
+    }
+
+    function uploadFile() {
+        const fileInput = document.getElementById('file-input').files[0];
+        // const mode = document.getElementById('mode').value;
+        if (fileInput) {
+            const formData = new FormData();
+            formData.append('file', fileInput);
+            // formData.append('mode', mode);
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    fetch(data)
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('output').innerText = data;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
+                })
+                .catch(error => {
+                    console.error('Error uploading file:', error);
+                });
+        }
+    }
+</script>
+</body>
+</html>
