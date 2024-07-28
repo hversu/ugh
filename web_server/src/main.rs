@@ -40,7 +40,7 @@ async fn main() -> io::Result<()>{
             (OUTPUT_DIRECTORY.to_owned
         ()));
 
-    let listener = TcpListener::bind("127.0.0.1:3000").await?;
+    let listener = TcpListener::bind("0.0.0.0:3000").await?;
     println!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await?;
 
