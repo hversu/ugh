@@ -25,7 +25,7 @@ pub struct Properties {
     pub other: HashMap<String, String>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Default)]
 pub struct Graph {
     pub nodes: Vec<Node>,
     pub edges: Vec<Edge>,
@@ -49,10 +49,7 @@ impl Properties {
                 other.insert(key, value);
             }
         }
-        Properties {
-            id,
-            other,
-        }
+        Properties { id, other }
     }
 
     pub fn get(&self, key: &str) -> Option<&String> {
@@ -91,7 +88,6 @@ impl Properties {
             Err(_) => None,
         }
     }
-
 }
 
 // Implementing IntoIterator for Properties
@@ -113,7 +109,6 @@ impl<'a> IntoIterator for &'a Properties {
         self.other.iter()
     }
 }
-
 
 #[cfg(test)]
 mod tests {

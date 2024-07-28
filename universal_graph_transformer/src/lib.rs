@@ -1,17 +1,17 @@
 extern crate dotenv;
 
+use crate::transform::transform_graph;
 use dotenv::dotenv;
 use std::env;
 use std::process;
-use crate::transform::transform_graph;
 
 mod graphml_parser;
-mod vt_parser;
-mod transform;
 mod input_type;
-mod types;
-mod vt_api;
 mod mysecret;
+mod transform;
+pub mod types;
+mod vt_api;
+mod vt_parser;
 
 #[tokio::main]
 pub async fn main() {
@@ -24,21 +24,17 @@ pub async fn main() {
     }
 
     let input = &args[1];
-    let mode = if args.len() == 3 {
-        &args[2]
-    } else {
-        "auto"
-    };
+    let mode = if args.len() == 3 { &args[2] } else { "auto" };
+    let output_path = "rich.json";
 
-    match transform_graph(input, mode).await {
+    match transform_graph(input, mode, output_path).await {
         Ok(_) => println!("Transformation successful!"),
         Err(e) => eprintln!("An error occurred: {}", e),
     }
 }
 
-
-pub async fn graph_transformer(input: &str, mode: &str) -> Result<(), String> {
-    match transform_graph(input, mode).await {
+pub async fn graph_transformer(input: &str, mode: &str, output_path: &str) -> Result<(), String> {
+    match transform_graph(input, mode, output_path).await {
         Ok(_) => Ok(()),
         Err(e) => Err(e.to_string()),
     }
@@ -66,5 +62,4 @@ mod tests {
             .output()
             .expect("Failed to run cargo run");
     }
-
 }
