@@ -3,7 +3,6 @@ lean.json
 rich.json
 systembc.graphml
 Cargo.lock
-mysecret.rs
 .DS_Store
 .idea
 .env
