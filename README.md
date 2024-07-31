@@ -1,3 +1,11 @@
+# Running the web server
+
+1. clone repo on Linux web server
+2. if serving locally, change `0.0.0.0:3000` to `127.0.0.1:3000` in `~/ugh/web_server/src/main.rs`
+3. in `~/ugh/web_server`, enter `cargo run` - the web server should enter a LISTENING state
+4. you should be able to hit the web server on port 3000 for the graph interface
+5. Can use example data from `~/ugh/example_data`
+
 # ugh... (universal graph harness)!
 
 a set of tools for casting "any" data to efficient universal, graph structures
