@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,21 +15,25 @@
             overflow: hidden;
             background-color: #f9f9f9;
         }
+
         #sidebar {
             width: 250px;
             background: #34495e;
             color: #ecf0f1;
             padding: 10px;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             transition: width 0.3s;
             z-index: 1000;
         }
+
         #sidebar.collapsed {
             width: 60px;
         }
-        #sidebar button, #sidebar .submenu button {
+
+        #sidebar button,
+        #sidebar .submenu button {
             background: #34495e;
             border: none;
             color: #ecf0f1;
@@ -40,14 +45,18 @@
             border-radius: 4px;
             transition: background 0.3s, padding 0.3s;
         }
-        #sidebar button:hover, #sidebar .submenu button:hover {
+
+        #sidebar button:hover,
+        #sidebar .submenu button:hover {
             background: #1abc9c;
         }
+
         #sidebar #toggle-btn {
             background: #1abc9c;
             text-align: center;
             padding: 8px;
         }
+
         .submenu {
             display: none;
             flex-direction: column;
@@ -55,24 +64,29 @@
             border-left: 2px solid #1abc9c;
             padding-left: 10px;
         }
+
         #sidebar.collapsed .submenu {
             display: none !important;
         }
+
         #sidebar.collapsed button {
             padding: 10px 5px;
         }
+
         #main {
             flex: 1;
             display: flex;
             flex-direction: column;
         }
+
         #mode-bar {
             background: #ecf0f1;
             padding: 10px;
             display: flex;
             justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         #mode-bar button {
             background: #3498db;
             border: none;
@@ -83,9 +97,11 @@
             border-radius: 4px;
             transition: background 0.3s;
         }
+
         #mode-bar button:hover {
             background: #2980b9;
         }
+
         #graph-container {
             flex: 1;
             background: #ffffff;
@@ -95,25 +111,34 @@
             align-items: center;
             padding: 20px;
         }
+
         #right-panel {
             width: 300px;
             background: #ecf0f1;
             padding: 10px;
-            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
         }
-        #right-panel .input-container, #right-panel .output-container {
+
+        #right-panel .input-container,
+        #right-panel .output-container {
             margin-bottom: 20px;
         }
-        #right-panel .input-container label, #right-panel .output-container label {
+
+        #right-panel .input-container label,
+        #right-panel .output-container label {
             display: block;
             margin-bottom: 5px;
             color: #2c3e50;
             font-weight: bold;
         }
-        #right-panel .input-container select, #right-panel .input-container input[type="text"], #right-panel .input-container input[type="file"], #right-panel .input-container button {
+
+        #right-panel .input-container select,
+        #right-panel .input-container input[type="text"],
+        #right-panel .input-container input[type="file"],
+        #right-panel .input-container button {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
@@ -121,6 +146,7 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
+
         #right-panel .input-container button {
             background: #3498db;
             color: #fff;
@@ -128,9 +154,11 @@
             cursor: pointer;
             transition: background 0.3s;
         }
+
         #right-panel .input-container button:hover {
             background: #2980b9;
         }
+
         .output-container {
             background: #ecf0f1;
             padding: 20px;
@@ -138,12 +166,14 @@
             overflow-y: scroll;
             max-height: 550px;
         }
+
         .tabs {
             display: flex;
             justify-content: space-around;
             border-bottom: 1px solid #ccc;
             margin-bottom: 10px;
         }
+
         .tabs button {
             background: none;
             border: none;
@@ -153,31 +183,39 @@
             border-radius: 4px 4px 0 0;
             transition: background 0.3s, color 0.3s;
         }
+
         .tabs button.active {
             background: #3498db;
             color: #fff;
         }
+
         .tabs button:hover:not(.active) {
             background: #ecf0f1;
         }
+
         .tab-content {
             display: none;
         }
+
         .tab-content.active {
             display: block;
         }
+
         .hierarchy-list {
             display: flex;
             flex-direction: column;
         }
+
         .hierarchy-list .item {
             display: flex;
             align-items: center;
             margin-bottom: 5px;
         }
+
         .hierarchy-list .item .text {
             flex: 1;
         }
+
         .hierarchy-list .item button {
             background: none;
             border: none;
@@ -187,25 +225,30 @@
             border-radius: 4px;
             transition: background 0.3s;
         }
+
         .hierarchy-list .item button:hover {
             background: #e74c3c;
             color: #fff;
         }
+
         .hierarchy-list .item button.edit:hover {
             background: #f39c12;
             color: #fff;
         }
+
         .new-node {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
         }
+
         .new-node input {
             flex: 1;
             padding: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
         .new-node button {
             background: #2ecc71;
             border: none;
@@ -216,9 +259,11 @@
             border-radius: 4px;
             transition: background 0.3s;
         }
+
         .new-node button:hover {
             background: #27ae60;
         }
+
         .placeholder {
             width: 300px;
             height: 300px;
@@ -231,21 +276,46 @@
             font-size: 24px;
             font-weight: bold;
         }
+
+        .graph-filter-container {
+            position: absolute;
+            margin-top: 50px;
+            margin-left: 50px;
+            z-index: 200;
+        }
+
+        .graph-filter-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .hidden {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             #sidebar {
                 position: absolute;
                 height: 100%;
                 z-index: 1000;
             }
+
             #main {
                 margin-left: 60px;
             }
+
             #sidebar.collapsed {
                 width: 0;
             }
+
             #main {
                 margin-left: 0;
             }
+
             #toggle-btn {
                 position: absolute;
                 left: 0;
@@ -255,166 +325,234 @@
         }
     </style>
     <script src="https://unpkg.com/htmx.org"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="//unpkg.com/force-graph"></script>
 </head>
+
 <body>
-<div id="sidebar">
-    <button id="toggle-btn" onclick="toggleSidebar()"><<</button>
-    <div>
-        <button onclick="toggleSubmenu('config-settings')">Config/Settings</button>
-        <div id="config-settings" class="submenu">
-            <button hx-get="/new" hx-target="#graph-container">New</button>
-            <button hx-get="/save" hx-target="#graph-container">Save</button>
-            <button hx-get="/load" hx-target="#graph-container">Load</button>
-            <button hx-get="/undo" hx-target="#graph-container">Undo</button>
-            <button hx-get="/redo" hx-target="#graph-container">Redo</button>
-            <button hx-get="/delete" hx-target="#graph-container">DELETE</button>
-            <button hx-get="/generate-key" hx-target="#graph-container">Generate Key</button>
+    <div id="sidebar">
+        <button id="toggle-btn" onclick="toggleSidebar()">
+            <<< /button>
+                <div>
+                    <button onclick="toggleSubmenu('config-settings')">Config/Settings</button>
+                    <div id="config-settings" class="submenu">
+                        <button hx-get="/new" hx-target="#graph-container">New</button>
+                        <button hx-get="/save" hx-target="#graph-container">Save</button>
+                        <button hx-get="/load" hx-target="#graph-container">Load</button>
+                        <button hx-get="/undo" hx-target="#graph-container">Undo</button>
+                        <button hx-get="/redo" hx-target="#graph-container">Redo</button>
+                        <button hx-get="/delete" hx-target="#graph-container">DELETE</button>
+                        <button hx-get="/generate-key" hx-target="#graph-container">Generate Key</button>
+                    </div>
+                </div>
+                <div>
+                    <button onclick="toggleSubmenu('api-keys')">API Keys</button>
+                    <div id="api-keys" class="submenu">
+                        <button hx-get="/api-keys/manage" hx-target="#graph-container">Manage API Keys</button>
+                    </div>
+                </div>
+    </div>
+    <div id="main">
+        <div class="graph-filter-container">
+            <select id="graph-filter-dropdown">
+                <option value="auto">Auto</option>
+                <option value="labels">Labels</option>
+                <option value="No labels">No labels </option>
+            </select>
+        </div>
+        <div id="graph-container">
+
+            <!-- Placeholder for the graph visualization -->
+            <!-- <div class="placeholder">Graph</div> -->
         </div>
     </div>
-    <div>
-        <button onclick="toggleSubmenu('api-keys')">API Keys</button>
-        <div id="api-keys" class="submenu">
-            <button hx-get="/api-keys/manage" hx-target="#graph-container">Manage API Keys</button>
+    <div id="right-panel">
+        <div class="input-container">
+            <label for="mode">Mode</label>
+            <select id="mode">
+                <option value="auto">auto</option>
+                <option value="graphml">graphml</option>
+                <option value="maltego">maltego</option>
+                <option value="vtapi">vtapi</option>
+            </select>
+        </div>
+        <!--    <div class="input-container">-->
+        <!--        <label for="text-input">Text Input</label>-->
+        <!--        <input type="text" id="text-input" placeholder="Enter text">-->
+        <!--        <button onclick="submitText()">Submit Text</button>-->
+        <!--    </div>-->
+        <div class="input-container">
+            <label for="file-input">Load .graphml File</label>
+            <input type="file" id="file-input" accept=".graphml">
+            <button onclick="uploadFile()">Upload File</button>
+        </div>
+        <div class="tabs">
+            <button class="active" onclick="showTab('hierarchy')">Hierarchy</button>
+            <button onclick="showTab('text')">Text</button>
+            <button onclick="showTab('json')">JSON</button>
+        </div>
+        <div id="hierarchy" class="tab-content active">
+            <div class="output-container" id="output">
+                <!-- Normalized output will be displayed here -->
+            </div>
+            <!--        <div class="new-node">-->
+            <!--            <input type="text" placeholder="New Node / Edge">-->
+            <!--            <button>Add</button>-->
+            <!--        </div>-->
+            <!--        <div class="hierarchy-list">-->
+            <!--            <div class="item">-->
+            <!--                <div class="text">Node 1</div>-->
+            <!--                <button class="edit">✎</button>-->
+            <!--                <button class="delete">✖</button>-->
+            <!--            </div>-->
+            <!--            <div class="item">-->
+            <!--                <div class="text">Node 2</div>-->
+            <!--                <button class="edit">✎</button>-->
+            <!--                <button class="delete">✖</button>-->
+            <!--            </div>-->
+            <!--            &lt;!&ndash; Add more items here &ndash;&gt;-->
+            <!--        </div>-->
+        </div>
+        <div id="text" class="tab-content">
+            <!-- Text content here -->
+        </div>
+        <div id="json" class="tab-content">
+            <!-- JSON content here -->
         </div>
     </div>
-</div>
-<div id="main">
-    <div id="graph-container">
-        <!-- Placeholder for the graph visualization -->
-        <div class="placeholder">Graph</div>
-    </div>
-</div>
-<div id="right-panel">
-    <div class="input-container">
-        <label for="mode">Mode</label>
-        <select id="mode">
-            <option value="auto">auto</option>
-            <option value="graphml">graphml</option>
-            <option value="maltego">maltego</option>
-            <option value="vtapi">vtapi</option>
-        </select>
-    </div>
-<!--    <div class="input-container">-->
-<!--        <label for="text-input">Text Input</label>-->
-<!--        <input type="text" id="text-input" placeholder="Enter text">-->
-<!--        <button onclick="submitText()">Submit Text</button>-->
-<!--    </div>-->
-    <div class="input-container">
-        <label for="file-input">Load .graphml File</label>
-        <input type="file" id="file-input" accept=".graphml">
-        <button onclick="uploadFile()">Upload File</button>
-    </div>
-    <div class="tabs">
-        <button class="active" onclick="showTab('hierarchy')">Hierarchy</button>
-        <button onclick="showTab('text')">Text</button>
-        <button onclick="showTab('json')">JSON</button>
-    </div>
-    <div id="hierarchy" class="tab-content active">
-        <div class="output-container" id="output">
-            <!-- Normalized output will be displayed here -->
-        </div>
-<!--        <div class="new-node">-->
-<!--            <input type="text" placeholder="New Node / Edge">-->
-<!--            <button>Add</button>-->
-<!--        </div>-->
-<!--        <div class="hierarchy-list">-->
-<!--            <div class="item">-->
-<!--                <div class="text">Node 1</div>-->
-<!--                <button class="edit">✎</button>-->
-<!--                <button class="delete">✖</button>-->
-<!--            </div>-->
-<!--            <div class="item">-->
-<!--                <div class="text">Node 2</div>-->
-<!--                <button class="edit">✎</button>-->
-<!--                <button class="delete">✖</button>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Add more items here &ndash;&gt;-->
-<!--        </div>-->
-    </div>
-    <div id="text" class="tab-content">
-        <!-- Text content here -->
-    </div>
-    <div id="json" class="tab-content">
-        <!-- JSON content here -->
-    </div>
-</div>
 
-<script>
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const toggleBtn = document.getElementById('toggle-btn');
-        if (sidebar.classList.contains('collapsed')) {
-            sidebar.classList.remove('collapsed');
-            toggleBtn.innerText = '<<';
-        } else {
-            sidebar.classList.add('collapsed');
-            toggleBtn.innerText = '>>';
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('toggle-btn');
+            if (sidebar.classList.contains('collapsed')) {
+                sidebar.classList.remove('collapsed');
+                toggleBtn.innerText = '<<';
+            } else {
+                sidebar.classList.add('collapsed');
+                toggleBtn.innerText = '>>';
+            }
         }
-    }
 
-    function toggleSubmenu(id) {
-        const submenu = document.getElementById(id);
-        if (submenu.style.display === 'flex') {
-            submenu.style.display = 'none';
-        } else {
-            submenu.style.display = 'flex';
+        function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            if (submenu.style.display === 'flex') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'flex';
+            }
         }
-    }
 
-    function showTab(tabId) {
-        document.querySelectorAll('.tabs button').forEach(button => {
-            button.classList.remove('active');
-        });
-        document.querySelectorAll('.tab-content').forEach(content => {
-            content.classList.remove('active');
-        });
-        document.querySelector(`.tabs button[onclick="showTab('${tabId}')"]`).classList.add('active');
-        document.getElementById(tabId).classList.add('active');
-    }
-
-    function submitText() {
-        const textInput = document.getElementById('text-input').value;
-        document.getElementById('output').innerText = textInput;
-    }
-
-    function loadFile() {
-        const fileInput = document.getElementById('file-input').files[0];
-        if (fileInput) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                document.getElementById('output').innerText = e.target.result;
-            };
-            reader.readAsText(fileInput);
+        function showTab(tabId) {
+            document.querySelectorAll('.tabs button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelector(`.tabs button[onclick="showTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
         }
-    }
 
-    function uploadFile() {
-        const fileInput = document.getElementById('file-input').files[0];
-        // const mode = document.getElementById('mode').value;
-        if (fileInput) {
-            const formData = new FormData();
-            formData.append('file', fileInput);
-            // formData.append('mode', mode);
-            fetch('/upload', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.text())
-                .then(data => {
-                    fetch(data)
-                        .then(response => response.text())
-                        .then(data => {
-                            document.getElementById('output').innerText = data;
-                        })
-                        .catch(error => {
-                            console.error('Error fetching data:', error);
-                        });
+        function submitText() {
+            const textInput = document.getElementById('text-input').value;
+            document.getElementById('output').innerText = textInput;
+        }
+
+        function loadFile() {
+            const fileInput = document.getElementById('file-input').files[0];
+            if (fileInput) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('output').innerText = e.target.result;
+                };
+                reader.readAsText(fileInput);
+            }
+        }
+
+        function uploadFile() {
+            const fileInput = document.getElementById('file-input').files[0];
+            // const mode = document.getElementById('mode').value;
+            if (fileInput) {
+                const formData = new FormData();
+                formData.append('file', fileInput);
+                // formData.append('mode', mode);
+                fetch('/upload', {
+                    method: 'POST',
+                    body: formData
                 })
-                .catch(error => {
-                    console.error('Error uploading file:', error);
-                });
+                    .then(response => response.text())
+                    .then(data => {
+                        fetch(data)
+                            .then(response => response.text())
+                            .then(data => {
+                                document.getElementById('output').innerText = data;
+                            })
+                            .catch(error => {
+                                console.error('Error fetching data:', error);
+                            });
+                    })
+                    .catch(error => {
+                        console.error('Error uploading file:', error);
+                    });
+            }
         }
-    }
-</script>
+
+        d3.json("../outputs/1caf50f1-286a-4d7f-9ed6-2a02c74a9ea9.json").then(function (data) {
+            drawMainChart(data);
+        })
+
+        function drawMainChart(data) {
+            data.nodes.forEach(d => d.id = 'n' + d.id)
+            data.links = data.edges;
+
+            const dropdown = document.getElementById('graph-filter-dropdown');
+
+            const Graph = ForceGraph()
+                (document.getElementById('graph-container'))
+                .width(800)
+                .height(800)
+                .nodeId('id')
+                .nodeVal(7)
+                .nodeColor(node => "#aaaaaa")
+                .nodeRelSize(4)
+                .zoom(0.6)
+                .nodeLabel(node => `<div style='background-color:red color:"blue"'> ${node.id}<br> <div class=${node.properties["service.name"] ? "" : "hidden"} >${node.properties["service.name"]}</div> <div class=${node.properties["banner.text"] ? "" : "hidden"} >${node.properties["banner.text"]}</div></div>`)
+                .linkSource('source')
+                .linkTarget('target')
+                .nodeCanvasObjectMode(() => "after")
+                .nodeCanvasObject((node, ctx, globalScale) => {
+                    if (dropdown.value === 'labels') {
+                        const label = node.label.substring(0, 64);
+                        console.log(label)
+                        const fontSize = 56 / globalScale;
+                        ctx.textAlign = "center";
+                        ctx.textBaseline = "middle";
+                        ctx.fillStyle = "black";
+                        ctx.fillText(label, node.x, node.y + 20);
+                    }
+                })
+                .graphData(data);
+
+            dropdown.addEventListener('change', function () {
+                Graph.nodeCanvasObject((node, ctx, globalScale) => {
+                    if (dropdown.value === 'labels') {
+                        const label = node.label.substring(0, 64);
+                        console.log(label, node.label)
+
+                        const fontSize = 18 / globalScale;
+                        ctx.textAlign = "center";
+                        ctx.textBaseline = "middle";
+                        ctx.fillStyle = "black";
+                        ctx.fillText(label, node.x, node.y + 20);
+                    }
+                })
+
+            });
+        }
+
+
+    </script>
 </body>
+
 </html>
