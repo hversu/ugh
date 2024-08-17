@@ -1,0 +1,677 @@
+{
+  "nodes": [
+    {
+      "id": 0,
+      "label": "38.180.146.165",
+      "type": "ipv4-address",
+      "properties": {
+        "id": 0,
+        "whois": "#\n# ARIN WHOIS data and services are subject to the Terms of Use\n# available at: https://www.arin.net/resources/registry/whois/tou/\n#\n# If you see inaccuracies in the results, please report at\n# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n#\n# Copyright 1997-2024, American Registry for Internet Numbers, Ltd.\n#\n\n\n#\n# Query terms are ambiguous.  The query is assumed to be:\n#     \"n 38.180.146.165\"\n#\n# Use \"?\" to get help.\n#\n\nPSINet, Inc. COGENT-A (NET-38-0-0-0-1) 38.0.0.0 - 38.255.255.255\n3NT SOLUTIONS LLP 3NT-CGNT-NET-1 (NET-38-180-0-0-1) 38.180.0.0 - 38.180.255.255\n3NT SOLUTIONS LLP CLOUD-NETWORK-US (NET-38-180-146-0-1) 38.180.146.0 - 38.180.146.255\n\n\n\n#\n# ARIN WHOIS data and services are subject to the Terms of Use\n# available at: https://www.arin.net/resources/registry/whois/tou/\n#\n# If you see inaccuracies in the results, please report at\n# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n#\n# Copyright 1997-2024, American Registry for Internet Numbers, Ltd.\n#",
+        "ipv4-address": "38.180.146.165",
+        "ipaddress.internal": "false"
+      }
+    },
+    {
+      "id": 1,
+      "label": "3348bd0dc009c3aa0ad98a2f243a49523366d47821b7a3519b57c114157bf425",
+      "type": "text",
+      "properties": {
+        "id": 1,
+        "text": "3348bd0dc009c3aa0ad98a2f243a49523366d47821b7a3519b57c114157bf425",
+        "properties.hash": "3348bd0dc009c3aa0ad98a2f243a49523366d47821b7a3519b57c114157bf425"
+      }
+    },
+    {
+      "id": 2,
+      "label": "https://www.hetzner.com",
+      "type": "domain",
+      "properties": {
+        "id": 2,
+        "title": "HETZNER-CLOUD2-AS",
+        "domain": "https://www.hetzner.com",
+        "type": "Content"
+      }
+    },
+    {
+      "id": 3,
+      "label": "063ffcca1c71119ffbc17786640cdb60feadb00f0c5f5c9657b752a4bd64a74e",
+      "type": "text",
+      "properties": {
+        "id": 3,
+        "text": "063ffcca1c71119ffbc17786640cdb60feadb00f0c5f5c9657b752a4bd64a74e",
+        "properties.hash": "063ffcca1c71119ffbc17786640cdb60feadb00f0c5f5c9657b752a4bd64a74e"
+      }
+    },
+    {
+      "id": 4,
+      "label": "Unnamed Node",
+      "type": "unknown",
+      "properties": {
+        "id": 4,
+        "title": "SCALAXY-AS"
+      }
+    },
+    {
+      "id": 5,
+      "label": "45.32.88.233",
+      "type": "ipv4-address",
+      "properties": {
+        "id": 5,
+        "ipv4-address": "45.32.88.233",
+        "ipaddress.internal": "false",
+        "whois": "#\n# ARIN WHOIS data and services are subject to the Terms of Use\n# available at: https://www.arin.net/resources/registry/whois/tou/\n#\n# If you see inaccuracies in the results, please report at\n# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n#\n# Copyright 1997-2024, American Registry for Internet Numbers, Ltd.\n#\n\n\n#\n# Query terms are ambiguous.  The query is assumed to be:\n#     \"n 45.32.88.233\"\n#\n# Use \"?\" to get help.\n#\n\nThe Constant Company, LLC CONSTANT (NET-45-32-0-0-1) 45.32.0.0 - 45.32.255.255\nVultr Holdings, LLC NET-45-32-88-0-22 (NET-45-32-88-0-1) 45.32.88.0 - 45.32.91.255\n\n\n\n#\n# ARIN WHOIS data and services are subject to the Terms of Use\n# available at: https://www.arin.net/resources/registry/whois/tou/\n#\n# If you see inaccuracies in the results, please report at\n# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n#\n# Copyright 1997-2024, American Registry for Internet Numbers, Ltd.\n#"
+      }
+    },
+    {
+      "id": 6,
+      "label": "10994d0d8245f724416319eaf5c8d4939e5b6087cddb4f16e1bb44b6feb5165d",
+      "type": "properties.hash",
+      "properties": {
+        "id": 6,
+        "properties.hash": "10994d0d8245f724416319eaf5c8d4939e5b6087cddb4f16e1bb44b6feb5165d",
+        "text": "10994d0d8245f724416319eaf5c8d4939e5b6087cddb4f16e1bb44b6feb5165d"
+      }
+    },
+    {
+      "id": 7,
+      "label": "2024-06-08 12:36:43.814 +0100",
+      "type": "maltego.automation.dob",
+      "properties": {
+        "id": 7,
+        "maltego.automation.dob": "2024-06-08 12:36:43.814 +0100",
+        "as.number": "20473"
+      }
+    },
+    {
+      "id": 8,
+      "label": "---\ncomponentUniformResourceIdentifiers: [\n  ]\nother: {\n  }\nproduct: openssh\nsource: OSI_APPLICATION_LAYER\n---\ncomponentUniformResourceIdentifiers: [\n  ]\nother:\n  family: OpenSSH\npart: a\nproduct: OpenSSH\nsource: OSI_APPLICATION_LAYER\nuniformResourceIdentifier: cpe:2.3:a:openbsd:openssh:8.4p1:*:*:*:*:*:*:*\nvendor: OpenBSD\nversion: 8.4p1\n---\ncomponentUniformResourceIdentifiers: [\n  ]\nother:\n  family: Linux\npart: o\nproduct: Linux\nsource: OSI_APPLICATION_LAYER\nuniformResourceIdentifier: cpe:2.3:o:debian:debian_linux:*:*:*:*:*:*:*:*\nvendor: Debian",
+      "type": "softwareCache",
+      "properties": {
+        "id": 8,
+        "port.number": "22",
+        "banner.text": "SSH-2.0-OpenSSH_8.4p1 Debian-5",
+        "transportProtocol": "TCP",
+        "service.name": "22/SSH",
+        "perspectiveId": "PERSPECTIVE_TATA",
+        "ip-address": "91.196.70.160",
+        "bannerHex": "5353482d322e302d4f70656e5353485f382e3470312044656269616e2d35",
+        "properties.service": "22:SSH",
+        "softwareCache": "---\ncomponentUniformResourceIdentifiers: [\n  ]\nother: {\n  }\nproduct: openssh\nsource: OSI_APPLICATION_LAYER\n---\ncomponentUniformResourceIdentifiers: [\n  ]\nother:\n  family: OpenSSH\npart: a\nproduct: OpenSSH\nsource: OSI_APPLICATION_LAYER\nuniformResourceIdentifier: cpe:2.3:a:openbsd:openssh:8.4p1:*:*:*:*:*:*:*\nvendor: OpenBSD\nversion: 8.4p1\n---\ncomponentUniformResourceIdentifiers: [\n  ]\nother:\n  family: Linux\npart: o\nproduct: Linux\nsource: OSI_APPLICATION_LAYER\nuniformResourceIdentifier: cpe:2.3:o:debian:debian_linux:*:*:*:*:*:*:*:*\nvendor: Debian"
+      }
+    },
+    {
+      "id": 9,
+      "label": "5.161.250.129",
+      "type": "ipv4-address",
+      "properties": {
+        "id": 9,
+        "ipaddress.internal": "false",
+        "ipv4-address": "5.161.250.129",
+        "whois": "#\n# ARIN WHOIS data and services are subject to the Terms of Use\n# available at: https://www.arin.net/resources/registry/whois/tou/\n#\n# If you see inaccuracies in the results, please report at\n# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n#\n# Copyright 1997-2024, American Registry for Internet Numbers, Ltd.\n#\n\n\n#\n# Query terms are ambiguous.  The query is assumed to be:\n#     \"n 5.161.250.129\"\n#\n# Use \"?\" to get help.\n#\n\nNetRange:       5.0.0.0 - 5.255.255.255\nCIDR:           5.0.0.0/8\nNetName:        RIPE-5\nNetHandle:      NET-5-0-0-0-1\nParent:          ()\nNetType:        Allocated to RIPE NCC\nOriginAS:       \nOrganization:   RIPE Network Coordination Centre (RIPE)\nRegDate:        2010-11-30\nUpdated:        2010-12-13\nComment:        These addresses have been further assigned to users in\nComment:        the RIPE NCC region. Contact information can be found in\nComment:        the RIPE database at http://www.ripe.net/whois\nRef:            https://rdap.arin.net/registry/ip/5.0.0.0\n\nResourceLink:  https://apps.db.ripe.net/search/query.html\nResourceLink:  whois.ripe.net\n\n\nOrgName:        RIPE Network Coordination Centre\nOrgId:          RIPE\nAddress:        P.O. Box 10096\nCity:           Amsterdam\nStateProv:      \nPostalCode:     1001EB\nCountry:        NL\nRegDate:        \nUpdated:        2013-07-29\nRef:            https://rdap.arin.net/registry/entity/RIPE\n\nReferralServer:  whois://whois.ripe.net\nResourceLink:  https://apps.db.ripe.net/search/query.html\n\nOrgTechHandle: RNO29-ARIN\nOrgTechName:   RIPE NCC Operations\nOrgTechPhone:  +31 20 535 4444 \nOrgTechEmail:  hostmaster@ripe.net\nOrgTechRef:    https://rdap.arin.net/registry/entity/RNO29-ARIN\n\nOrgAbuseHandle: ABUSE3850-ARIN\nOrgAbuseName:   Abuse Contact\nOrgAbusePhone:  +31205354444 \nOrgAbuseEmail:  abuse@ripe.net\nOrgAbuseRef:    https://rdap.arin.net/registry/entity/ABUSE3850-ARIN\n\n\n#\n# ARIN WHOIS data and services are subject to the Terms of Use\n# available at: https://www.arin.net/resources/registry/whois/tou/\n#\n# If you see inaccuracies in the results, please report at\n# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n#\n# Copyright 1997-2024, American Registry for Internet Numbers, Ltd.\n#\n\n% This is the RIPE Database query service.\n% The objects are in RPSL format.\n%\n% The RIPE Database is subject to Terms and Conditions.\n% See https://apps.db.ripe.net/docs/HTML-Terms-And-Conditions\n\n% Note: this output has been filtered.\n%       To receive output for a database update, use the \"-B\" flag.\n\n% Information related to '5.161.250.0 - 5.161.250.255'\n\n% Abuse contact for '5.161.250.0 - 5.161.250.255' is 'abuse@hetzner.com'\n\ninetnum:        5.161.250.0 - 5.161.250.255\nnetname:        CLOUD-ASH\ncountry:        US\nstatus:         ASSIGNED PA\norg:            ORG-HOA1-RIPE\nadmin-c:        HOAC1-RIPE\ntech-c:         HOAC1-RIPE\nmnt-by:         HOS-GUN\nremarks:        INFRA-AW\ncreated:        2023-12-12T11:30:19Z\nlast-modified:  2023-12-12T11:30:19Z\nsource:         RIPE\n\norganisation:   ORG-HOA1-RIPE\norg-name:       Hetzner Online GmbH\ncountry:        DE\norg-type:       LIR\naddress:        Industriestrasse 25\naddress:        D-91710\naddress:        Gunzenhausen\naddress:        GERMANY\nphone:          +49 9831 5050\nfax-no:         +49 9831 5053\nadmin-c:        MF1400-RIPE\nadmin-c:        GM834-RIPE\nadmin-c:        HOAC1-RIPE\nadmin-c:        MH375-RIPE\nadmin-c:        SK2374-RIPE\nadmin-c:        SK8441-RIPE\nabuse-c:        HOAC1-RIPE\nmnt-ref:        RIPE-NCC-HM-MNT\nmnt-ref:        HOS-GUN\nmnt-by:         RIPE-NCC-HM-MNT\nmnt-by:         HOS-GUN\ncreated:        2004-04-17T11:07:58Z\nlast-modified:  2022-11-22T18:32:44Z\nsource:         RIPE # Filtered\n\nrole:           Hetzner Online GmbH - Contact Role\naddress:        Hetzner Online GmbH\naddress:        Industriestrasse 25\naddress:        D-91710 Gunzenhausen\naddress:        Germany\nphone:          +49 9831 505-0\nfax-no:         +49 9831 505-3\nabuse-mailbox:  abuse@hetzner.com\nremarks:        *************************************************\nremarks:        * For spam/abuse/security issues please contact *\nremarks:        * abuse@hetzner.com, or fill out the form at *\nremarks:        * abuse.hetzner.com, thank you. *\nremarks:        *************************************************\nremarks:\nremarks:        *************************************************\nremarks:        * Any questions on Peering please send to *\nremarks:        * peering@hetzner.com *\nremarks:        *************************************************\norg:            ORG-HOA1-RIPE\nadmin-c:        MH375-RIPE\ntech-c:         GM834-RIPE\ntech-c:         SK2374-RIPE\ntech-c:         MF1400-RIPE\ntech-c:         SK8441-RIPE\ntech-c:         DD15478-RIPE\nnic-hdl:        HOAC1-RIPE\nmnt-by:         HOS-GUN\ncreated:        2004-08-12T09:40:20Z\nlast-modified:  2022-11-22T18:33:55Z\nsource:         RIPE # Filtered\n\n% Information related to '5.161.0.0/16AS213230'\n\nroute:          5.161.0.0/16\norg:            ORG-HOA1-RIPE\ndescr:          HETZNER-DC\norigin:         AS213230\nmnt-by:         HOS-GUN\ncreated:        2021-03-30T09:16:08Z\nlast-modified:  2021-03-30T09:16:08Z\nsource:         RIPE\n\norganisation:   ORG-HOA1-RIPE\norg-name:       Hetzner Online GmbH\ncountry:        DE\norg-type:       LIR\naddress:        Industriestrasse 25\naddress:        D-91710\naddress:        Gunzenhausen\naddress:        GERMANY\nphone:          +49 9831 5050\nfax-no:         +49 9831 5053\nadmin-c:        MF1400-RIPE\nadmin-c:        GM834-RIPE\nadmin-c:        HOAC1-RIPE\nadmin-c:        MH375-RIPE\nadmin-c:        SK2374-RIPE\nadmin-c:        SK8441-RIPE\nabuse-c:        HOAC1-RIPE\nmnt-ref:        RIPE-NCC-HM-MNT\nmnt-ref:        HOS-GUN\nmnt-by:         RIPE-NCC-HM-MNT\nmnt-by:         HOS-GUN\ncreated:        2004-04-17T11:07:58Z\nlast-modified:  2022-11-22T18:32:44Z\nsource:         RIPE # Filtered\n\n% This query was served by the RIPE Database Query Service version 1.112 (ABERDEEN)"
+      }
+    },
+    {
+      "id": 10,
+      "label": "2024-06-08 12:36:47.042 +0100",
+      "type": "maltego.automation.dob",
+      "properties": {
+        "id": 10,
+        "as.number": "9009",
+        "maltego.automation.dob": "2024-06-08 12:36:47.042 +0100"
+      }
+    },
+    {
+      "id": 11,
+      "label": "2024-06-08 12:36:43.814 +0100",
+      "type": "maltego.automation.dob",
+      "properties": {
+        "id": 11,
+        "as.number": "213230",
+        "maltego.automation.dob": "2024-06-08 12:36:43.814 +0100"
+      }
+    },
+    {
+      "id": 12,
+      "label": "485454502f312e312034303120556e617574686f72697a65640d0a5365727665723a206e67696e780d0a446174653a20203c52454441435445443e0d0a436f6e74656e742d547970653a20746578742f68746d6c3b20636861727365743d7574662d380d0a436f6e74656e742d4c656e6774683a203137320d0a436f6e6e656374696f6e3a206b6565702d616c6976650d0a5757572d41757468656e7469636174653a204261736963207265616c6d3d2241757468220d0a",
+      "type": "bannerHex",
+      "properties": {
+        "id": 12,
+        "service.name": "81/HTTP",
+        "perspectiveId": "PERSPECTIVE_TATA",
+        "ip-address": "5.161.250.129",
+        "transportProtocol": "TCP",
+        "bannerHex": "485454502f312e312034303120556e617574686f72697a65640d0a5365727665723a206e67696e780d0a446174653a20203c52454441435445443e0d0a436f6e74656e742d547970653a20746578742f68746d6c3b20636861727365743d7574662d380d0a436f6e74656e742d4c656e6774683a203137320d0a436f6e6e656374696f6e3a206b6565702d616c6976650d0a5757572d41757468656e7469636174653a204261736963207265616c6d3d2241757468220d0a",
+        "properties.service": "81:HTTP",
+        "port.number": "81",
+        "softwareCache": "---\ncomponentUniformResourceIdentifiers: [\n  ]\nother:\n  family: nginx\npart: a\nproduct: nginx\nsource: OSI_APPLICATION_LAYER\nuniformResourceIdentifier: cpe:2.3:a:f5:nginx:*:*:*:*:*:*:*:*\nvendor: nginx",
+        "banner.text": "HTTP/1.1 401 Unauthorized\nServer: nginx\nDate:  &lt;REDACTED&gt;\nContent-Type: text/html; charset=utf-8\nContent-Length: 172\nConnection: keep-alive\nWWW-Authenticate: Basic realm=&quot;Auth&quot;"
+      }
+    },
+    {
+      "id": 13,
+      "label": "466015ff217e08d4ab64575c944747ae42cc250a93081087adfc92c3c7a43338",
+      "type": "text",
+      "properties": {
+        "id": 13,
+        "text": "466015ff217e08d4ab64575c944747ae42cc250a93081087adfc92c3c7a43338",
+        "properties.hash": "466015ff217e08d4ab64575c944747ae42cc250a93081087adfc92c3c7a43338"
+      }
+    },
+    {
+      "id": 14,
+      "label": "http://www.constant.com/",
+      "type": "domain",
+      "properties": {
+        "id": 14,
+        "title": "AS-CHOOPA",
+        "domain": "http://www.constant.com/",
+        "type": "Content"
+      }
+    },
+    {
+      "id": 15,
+      "label": "SystemBC",
+      "type": "unknown",
+      "properties": {
+        "id": 15,
+        "name": "SystemBC"
+      }
+    },
+    {
+      "id": 16,
+      "label": "a3df4e182a0ce0f7d7195f22ac9df34e0c0e7223b7a2360ecf928fec1899980b",
+      "type": "text",
+      "properties": {
+        "id": 16,
+        "text": "a3df4e182a0ce0f7d7195f22ac9df34e0c0e7223b7a2360ecf928fec1899980b",
+        "properties.hash": "a3df4e182a0ce0f7d7195f22ac9df34e0c0e7223b7a2360ecf928fec1899980b"
+      }
+    },
+    {
+      "id": 17,
+      "label": "https://www.estnoc.ee",
+      "type": "domain",
+      "properties": {
+        "id": 17,
+        "domain": "https://www.estnoc.ee",
+        "type": "Cable/DSL/ISP",
+        "title": "EstNOC-GLOBAL"
+      }
+    },
+    {
+      "id": 18,
+      "label": "91.196.70.160",
+      "type": "ipv4-address",
+      "properties": {
+        "id": 18,
+        "whois": "#\n# ARIN WHOIS data and services are subject to the Terms of Use\n# available at: https://www.arin.net/resources/registry/whois/tou/\n#\n# If you see inaccuracies in the results, please report at\n# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n#\n# Copyright 1997-2024, American Registry for Internet Numbers, Ltd.\n#\n\n\n#\n# Query terms are ambiguous.  The query is assumed to be:\n#     \"n 91.196.70.160\"\n#\n# Use \"?\" to get help.\n#\n\nNetRange:       91.0.0.0 - 91.255.255.255\nCIDR:           91.0.0.0/8\nNetName:        91-RIPE\nNetHandle:      NET-91-0-0-0-1\nParent:          ()\nNetType:        Allocated to RIPE NCC\nOriginAS:       \nOrganization:   RIPE Network Coordination Centre (RIPE)\nRegDate:        2005-06-30\nUpdated:        2009-05-18\nComment:        These addresses have been further assigned to users in\nComment:        the RIPE NCC region. Contact information can be found in\nComment:        the RIPE database at http://www.ripe.net/whois\nRef:            https://rdap.arin.net/registry/ip/91.0.0.0\n\nResourceLink:  https://apps.db.ripe.net/search/query.html\nResourceLink:  whois.ripe.net\n\n\nOrgName:        RIPE Network Coordination Centre\nOrgId:          RIPE\nAddress:        P.O. Box 10096\nCity:           Amsterdam\nStateProv:      \nPostalCode:     1001EB\nCountry:        NL\nRegDate:        \nUpdated:        2013-07-29\nRef:            https://rdap.arin.net/registry/entity/RIPE\n\nReferralServer:  whois://whois.ripe.net\nResourceLink:  https://apps.db.ripe.net/search/query.html\n\nOrgTechHandle: RNO29-ARIN\nOrgTechName:   RIPE NCC Operations\nOrgTechPhone:  +31 20 535 4444 \nOrgTechEmail:  hostmaster@ripe.net\nOrgTechRef:    https://rdap.arin.net/registry/entity/RNO29-ARIN\n\nOrgAbuseHandle: ABUSE3850-ARIN\nOrgAbuseName:   Abuse Contact\nOrgAbusePhone:  +31205354444 \nOrgAbuseEmail:  abuse@ripe.net\nOrgAbuseRef:    https://rdap.arin.net/registry/entity/ABUSE3850-ARIN\n\n\n#\n# ARIN WHOIS data and services are subject to the Terms of Use\n# available at: https://www.arin.net/resources/registry/whois/tou/\n#\n# If you see inaccuracies in the results, please report at\n# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n#\n# Copyright 1997-2024, American Registry for Internet Numbers, Ltd.\n#\n\n% This is the RIPE Database query service.\n% The objects are in RPSL format.\n%\n% The RIPE Database is subject to Terms and Conditions.\n% See https://apps.db.ripe.net/docs/HTML-Terms-And-Conditions\n\n% Note: this output has been filtered.\n%       To receive output for a database update, use the \"-B\" flag.\n\n% Information related to '91.196.70.0 - 91.196.70.255'\n\n% Abuse contact for '91.196.70.0 - 91.196.70.255' is 'abuse@estnoc.ee'\n\ninetnum:        91.196.70.0 - 91.196.70.255\nnetname:        EstNOC-FRA-Germany\ndescr:          EstNOC-Global\ncountry:        DE\nadmin-c:        EE2159-RIPE\ntech-c:         EE2159-RIPE\nmnt-domains:    ESTNOC-MNT\nmnt-lower:      ESTNOC-MNT\nmnt-routes:     ESTNOC-MNT\norg:            ORG-EA968-RIPE\nstatus:         ASSIGNED PA\nremarks:        - - - LEGAL CONCERNS - - -\nremarks:        For any legal requests, please send an E-mail to\nremarks:        eu-legal@estnoc.ee for a maximum of 48hours response.\nremarks:        - - - LEGAL CONCERNS - - -\nmnt-by:         ESTNOC-MNT\ncreated:        2018-08-25T15:14:16Z\nlast-modified:  2020-06-01T20:38:58Z\nsource:         RIPE\n\norganisation:   ORG-EA968-RIPE\norg-name:       ESTNOC-GLOBAL\norg-type:       OTHER\naddress:        Estonia, Parnumaa, Tori vald, Muti kyla, 86811\nabuse-c:        ACRO394-RIPE\nmnt-ref:        ESTNOC-MNT\nmnt-ref:        PREFIXBROKER-MNT\nmnt-ref:        MNT-GCX\nmnt-by:         ESTNOC-MNT\ncreated:        2016-03-02T22:52:16Z\nlast-modified:  2023-09-26T22:16:43Z\nsource:         RIPE # Filtered\n\nperson:         Ego Ennok\naddress:        Estonia, Parnumaa, Tori vald, Muti kyla, 86811\nphone:          +37258501736\nnic-hdl:        EE2159-RIPE\nmnt-by:         ESTNOC-MNT\ncreated:        2016-03-02T21:24:09Z\nlast-modified:  2016-03-02T21:24:09Z\nsource:         RIPE\n\n% Information related to '91.196.70.0/24AS206804'\n\nroute:          91.196.70.0/24\norigin:         AS206804\nmnt-by:         ESTNOC-MNT\ncreated:        2018-09-19T22:00:25Z\nlast-modified:  2018-09-19T22:00:25Z\nsource:         RIPE\n\n% This query was served by the RIPE Database Query Service version 1.112 (DEXTER)",
+        "ipv4-address": "91.196.70.160",
+        "ipaddress.internal": "false"
+      }
+    },
+    {
+      "id": 19,
+      "label": "2024-06-08 12:36:43.814 +0100",
+      "type": "maltego.automation.dob",
+      "properties": {
+        "id": 19,
+        "as.number": "58061",
+        "maltego.automation.dob": "2024-06-08 12:36:43.814 +0100"
+      }
+    },
+    {
+      "id": 20,
+      "label": "5.61.61.64",
+      "type": "ipv4-address",
+      "properties": {
+        "id": 20,
+        "ipaddress.internal": "false",
+        "ipv4-address": "5.61.61.64",
+        "whois": "#\n# ARIN WHOIS data and services are subject to the Terms of Use\n# available at: https://www.arin.net/resources/registry/whois/tou/\n#\n# If you see inaccuracies in the results, please report at\n# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n#\n# Copyright 1997-2024, American Registry for Internet Numbers, Ltd.\n#\n\n\n#\n# Query terms are ambiguous.  The query is assumed to be:\n#     \"n 5.61.61.64\"\n#\n# Use \"?\" to get help.\n#\n\nNetRange:       5.0.0.0 - 5.255.255.255\nCIDR:           5.0.0.0/8\nNetName:        RIPE-5\nNetHandle:      NET-5-0-0-0-1\nParent:          ()\nNetType:        Allocated to RIPE NCC\nOriginAS:       \nOrganization:   RIPE Network Coordination Centre (RIPE)\nRegDate:        2010-11-30\nUpdated:        2010-12-13\nComment:        These addresses have been further assigned to users in\nComment:        the RIPE NCC region. Contact information can be found in\nComment:        the RIPE database at http://www.ripe.net/whois\nRef:            https://rdap.arin.net/registry/ip/5.0.0.0\n\nResourceLink:  https://apps.db.ripe.net/search/query.html\nResourceLink:  whois.ripe.net\n\n\nOrgName:        RIPE Network Coordination Centre\nOrgId:          RIPE\nAddress:        P.O. Box 10096\nCity:           Amsterdam\nStateProv:      \nPostalCode:     1001EB\nCountry:        NL\nRegDate:        \nUpdated:        2013-07-29\nRef:            https://rdap.arin.net/registry/entity/RIPE\n\nReferralServer:  whois://whois.ripe.net\nResourceLink:  https://apps.db.ripe.net/search/query.html\n\nOrgTechHandle: RNO29-ARIN\nOrgTechName:   RIPE NCC Operations\nOrgTechPhone:  +31 20 535 4444 \nOrgTechEmail:  hostmaster@ripe.net\nOrgTechRef:    https://rdap.arin.net/registry/entity/RNO29-ARIN\n\nOrgAbuseHandle: ABUSE3850-ARIN\nOrgAbuseName:   Abuse Contact\nOrgAbusePhone:  +31205354444 \nOrgAbuseEmail:  abuse@ripe.net\nOrgAbuseRef:    https://rdap.arin.net/registry/entity/ABUSE3850-ARIN\n\n\n#\n# ARIN WHOIS data and services are subject to the Terms of Use\n# available at: https://www.arin.net/resources/registry/whois/tou/\n#\n# If you see inaccuracies in the results, please report at\n# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n#\n# Copyright 1997-2024, American Registry for Internet Numbers, Ltd.\n#\n\n% This is the RIPE Database query service.\n% The objects are in RPSL format.\n%\n% The RIPE Database is subject to Terms and Conditions.\n% See https://apps.db.ripe.net/docs/HTML-Terms-And-Conditions\n\n% Note: this output has been filtered.\n%       To receive output for a database update, use the \"-B\" flag.\n\n% Information related to '5.61.60.0 - 5.61.61.255'\n\n% Abuse contact for '5.61.60.0 - 5.61.61.255' is 'abuse@iroko.net'\n\ninetnum:        5.61.60.0 - 5.61.61.255\nnetname:        CLOUD-NETWORK-GB\ncountry:        GB\ndescr:          ********************************************************\ndescr:          * As ISP we provide IP transit and bandwidth services.\ndescr:          *\ndescr:          * Those services are self managed by our customers\ndescr:          * therefore, we are not using this IP space ourselves\ndescr:          * and it could be assigned to various end customers.\ndescr:          *\ndescr:          * In case of issues related with SPAM, Fraud, Phishing\ndescr:          * DDoS, port scans or others, feel free to contact us\ndescr:          * with relevant info. Abuse email: abuse@iroko.net\ndescr:          ********************************************************\norg:            ORG-INC4-RIPE\nadmin-c:        CAWO1-RIPE\ntech-c:         CAWO1-RIPE\nstatus:         ASSIGNED PA\nmnt-by:         IROKO-MNT\nremarks:        IROKO Networks Corp.\nremarks:        Technical issues..............: support@iroko.net\nremarks:        Services request..............: sales@iroko.net\nremarks:        Abuse departament.............: abuse@iroko.net\nremarks:        Corporate web site............: https://iroko.net\ncreated:        2019-10-17T10:20:45Z\nlast-modified:  2021-05-01T11:11:33Z\nsource:         RIPE\n\norganisation:   ORG-INC4-RIPE\norg-name:       IROKO Networks Corporation\norg-type:       OTHER\naddress:        Panama city, Panama\naddress:        Postal Address: 63/66 Hatton Garden, Suite 23, London, EC1N 8LE, United Kingdom\nabuse-c:        ACRO15876-RIPE\nmnt-ref:        IROKO-MNT\nmnt-by:         IROKO-MNT\ncreated:        2021-04-26T12:05:29Z\nlast-modified:  2022-07-13T13:36:10Z\nsource:         RIPE # Filtered\n\nperson:         Carlos Alberto Weand Ortiz\naddress:        63/66 Hatton Garden, Suite 23, London, EC1N 8LE, United Kingdom\nphone:          +1 231 577 6775\nnic-hdl:        CAWO1-RIPE\nmnt-by:         IROKO-MNT\ncreated:        2021-04-26T12:59:46Z\nlast-modified:  2023-06-01T12:55:12Z\nsource:         RIPE\n\n% Information related to '5.61.60.0/23AS9009'\n\nroute:          5.61.60.0/23\norigin:         AS9009\nmnt-by:         MNT-3NT\ncreated:        2019-10-17T10:33:50Z\nlast-modified:  2019-10-17T10:33:50Z\nsource:         RIPE\n\n% This query was served by the RIPE Database Query Service version 1.112 (ABERDEEN)"
+      }
+    },
+    {
+      "id": 21,
+      "label": "2024-06-08 12:36:47.042 +0100",
+      "type": "maltego.automation.dob",
+      "properties": {
+        "id": 21,
+        "maltego.automation.dob": "2024-06-08 12:36:47.042 +0100",
+        "as.number": "206804"
+      }
+    },
+    {
+      "id": 22,
+      "label": "m247.ro",
+      "type": "domain",
+      "properties": {
+        "id": 22,
+        "domain": "m247.ro",
+        "title": "M247",
+        "type": "NSP"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n0",
+      "target": "n12",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 0,
+        "maltego.link.is_reversed": "false",
+        "target": "n12",
+        "maltego.link.transform.display-name": "To Services [Censys]",
+        "maltego.link.show-label": "0",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToServices",
+        "source": "n0",
+        "maltego.link.transform.run-date": "2024-06-08 12:54:23.748 +0100"
+      }
+    },
+    {
+      "source": "n0",
+      "target": "n8",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 1,
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToServices",
+        "maltego.link.transform.display-name": "To Services [Censys]",
+        "maltego.link.transform.run-date": "2024-06-08 12:54:23.748 +0100",
+        "target": "n8",
+        "maltego.link.is_reversed": "false",
+        "maltego.link.show-label": "0",
+        "source": "n0"
+      }
+    },
+    {
+      "source": "n5",
+      "target": "n7",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 2,
+        "maltego.link.transform.run-date": "2024-06-08 12:35:37.148 +0100",
+        "target": "n7",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToAsNumber",
+        "maltego.link.show-label": "0",
+        "maltego.link.is_reversed": "false",
+        "source": "n5",
+        "maltego.link.transform.display-name": "To AS Number [Censys]"
+      }
+    },
+    {
+      "source": "n16",
+      "target": "n0",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 3,
+        "target": "n0",
+        "maltego.link.show-label": "0",
+        "maltego.link.is_reversed": "false",
+        "source": "n16"
+      }
+    },
+    {
+      "source": "n20",
+      "target": "n10",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 4,
+        "source": "n20",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToAsNumber",
+        "maltego.link.show-label": "0",
+        "maltego.link.is_reversed": "false",
+        "maltego.link.transform.display-name": "To AS Number [Censys]",
+        "target": "n10",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:36.230 +0100"
+      }
+    },
+    {
+      "source": "n6",
+      "target": "n20",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 5,
+        "source": "n6",
+        "maltego.link.show-label": "0",
+        "target": "n20",
+        "maltego.link.is_reversed": "false"
+      }
+    },
+    {
+      "source": "n9",
+      "target": "n12",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 6,
+        "source": "n9",
+        "maltego.link.is_reversed": "false",
+        "target": "n12",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToServices",
+        "maltego.link.transform.display-name": "To Services [Censys]",
+        "maltego.link.show-label": "0",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:48.176 +0100"
+      }
+    },
+    {
+      "source": "n15",
+      "target": "n1",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 7,
+        "maltego.link.is_reversed": "false",
+        "target": "n1",
+        "maltego.link.show-label": "0",
+        "source": "n15"
+      }
+    },
+    {
+      "source": "n15",
+      "target": "n6",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 8,
+        "maltego.link.is_reversed": "false",
+        "source": "n15",
+        "target": "n6",
+        "maltego.link.show-label": "0"
+      }
+    },
+    {
+      "source": "n1",
+      "target": "n20",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 9,
+        "source": "n1",
+        "target": "n20",
+        "maltego.link.is_reversed": "false",
+        "maltego.link.show-label": "0"
+      }
+    },
+    {
+      "source": "n19",
+      "target": "n4",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 10,
+        "source": "n19",
+        "maltego.link.show-label": "0",
+        "target": "n4",
+        "maltego.link.is_reversed": "false",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:56.901 +0100",
+        "maltego.link.transform.name": "paterva.v2.whoisxml.ipnetblocks.ASNumberToCompany",
+        "maltego.link.transform.display-name": "To Company (Owner) [WhoisXML]"
+      }
+    },
+    {
+      "source": "n5",
+      "target": "n8",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 11,
+        "target": "n8",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToServices",
+        "maltego.link.transform.display-name": "To Services [Censys]",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:46.366 +0100",
+        "maltego.link.is_reversed": "false",
+        "source": "n5",
+        "maltego.link.show-label": "0"
+      }
+    },
+    {
+      "source": "n20",
+      "target": "n8",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 12,
+        "maltego.link.is_reversed": "false",
+        "target": "n8",
+        "maltego.link.transform.display-name": "To Services [Censys]",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToServices",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:47.307 +0100",
+        "source": "n20",
+        "maltego.link.show-label": "0"
+      }
+    },
+    {
+      "source": "n9",
+      "target": "n8",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 13,
+        "maltego.link.transform.display-name": "To Services [Censys]",
+        "source": "n9",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToServices",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:48.176 +0100",
+        "target": "n8",
+        "maltego.link.show-label": "0",
+        "maltego.link.is_reversed": "false"
+      }
+    },
+    {
+      "source": "n15",
+      "target": "n13",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 14,
+        "maltego.link.is_reversed": "false",
+        "source": "n15",
+        "maltego.link.show-label": "0",
+        "target": "n13"
+      }
+    },
+    {
+      "source": "n15",
+      "target": "n3",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 15,
+        "maltego.link.show-label": "0",
+        "maltego.link.is_reversed": "false",
+        "source": "n15",
+        "target": "n3"
+      }
+    },
+    {
+      "source": "n18",
+      "target": "n8",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 16,
+        "target": "n8",
+        "maltego.link.transform.display-name": "To Services [Censys]",
+        "source": "n18",
+        "maltego.link.is_reversed": "false",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToServices",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:49.272 +0100",
+        "maltego.link.show-label": "0"
+      }
+    },
+    {
+      "source": "n13",
+      "target": "n5",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 17,
+        "source": "n13",
+        "maltego.link.is_reversed": "true",
+        "target": "n5",
+        "maltego.link.show-label": "0"
+      }
+    },
+    {
+      "source": "n3",
+      "target": "n5",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 18,
+        "target": "n5",
+        "source": "n3",
+        "maltego.link.show-label": "0",
+        "maltego.link.is_reversed": "true"
+      }
+    },
+    {
+      "source": "n9",
+      "target": "n11",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 19,
+        "maltego.link.transform.run-date": "2024-06-08 12:35:35.078 +0100",
+        "target": "n11",
+        "maltego.link.is_reversed": "false",
+        "source": "n9",
+        "maltego.link.show-label": "0",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToAsNumber",
+        "maltego.link.transform.display-name": "To AS Number [Censys]"
+      }
+    },
+    {
+      "source": "n15",
+      "target": "n16",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 20,
+        "source": "n15",
+        "target": "n16",
+        "maltego.link.show-label": "0",
+        "maltego.link.is_reversed": "false"
+      }
+    },
+    {
+      "source": "n7",
+      "target": "n14",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 21,
+        "maltego.link.transform.run-date": "2024-06-08 12:35:56.933 +0100",
+        "target": "n14",
+        "source": "n7",
+        "maltego.link.show-label": "0",
+        "maltego.link.is_reversed": "false",
+        "maltego.link.transform.name": "paterva.v2.whoisxml.ipnetblocks.ASNumberToCompany",
+        "maltego.link.transform.display-name": "To Company (Owner) [WhoisXML]"
+      }
+    },
+    {
+      "source": "n18",
+      "target": "n21",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 22,
+        "source": "n18",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToAsNumber",
+        "target": "n21",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:34.353 +0100",
+        "maltego.link.show-label": "0",
+        "maltego.link.transform.display-name": "To AS Number [Censys]",
+        "maltego.link.is_reversed": "false"
+      }
+    },
+    {
+      "source": "n21",
+      "target": "n17",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 23,
+        "target": "n17",
+        "maltego.link.transform.name": "paterva.v2.whoisxml.ipnetblocks.ASNumberToCompany",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:56.931 +0100",
+        "maltego.link.is_reversed": "false",
+        "maltego.link.show-label": "0",
+        "source": "n21",
+        "maltego.link.transform.display-name": "To Company (Owner) [WhoisXML]"
+      }
+    },
+    {
+      "source": "n0",
+      "target": "n19",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 24,
+        "target": "n19",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToAsNumber",
+        "maltego.link.transform.display-name": "To AS Number [Censys]",
+        "maltego.link.is_reversed": "false",
+        "maltego.link.show-label": "0",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:34.349 +0100",
+        "source": "n0"
+      }
+    },
+    {
+      "source": "n10",
+      "target": "n22",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 25,
+        "maltego.link.transform.run-date": "2024-06-08 12:35:56.930 +0100",
+        "maltego.link.show-label": "0",
+        "target": "n22",
+        "maltego.link.transform.name": "paterva.v2.whoisxml.ipnetblocks.ASNumberToCompany",
+        "source": "n10",
+        "maltego.link.is_reversed": "false",
+        "maltego.link.transform.display-name": "To Company (Owner) [WhoisXML]"
+      }
+    },
+    {
+      "source": "n18",
+      "target": "n12",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 26,
+        "maltego.link.transform.display-name": "To Services [Censys]",
+        "maltego.link.show-label": "0",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:49.272 +0100",
+        "target": "n12",
+        "maltego.link.is_reversed": "false",
+        "source": "n18",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToServices"
+      }
+    },
+    {
+      "source": "n5",
+      "target": "n12",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 27,
+        "maltego.link.show-label": "0",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToServices",
+        "target": "n12",
+        "maltego.link.transform.display-name": "To Services [Censys]",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:46.366 +0100",
+        "source": "n5",
+        "maltego.link.is_reversed": "false"
+      }
+    },
+    {
+      "source": "n11",
+      "target": "n2",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 28,
+        "maltego.link.is_reversed": "false",
+        "target": "n2",
+        "source": "n11",
+        "maltego.link.transform.name": "paterva.v2.whoisxml.ipnetblocks.ASNumberToCompany",
+        "maltego.link.transform.display-name": "To Company (Owner) [WhoisXML]",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:56.927 +0100",
+        "maltego.link.show-label": "0"
+      }
+    },
+    {
+      "source": "n20",
+      "target": "n12",
+      "relation_type": "linked_to",
+      "properties": {
+        "id": 29,
+        "maltego.link.show-label": "0",
+        "source": "n20",
+        "maltego.link.is_reversed": "false",
+        "maltego.link.transform.name": "paterva.v2.censys.ipv4AddressToServices",
+        "maltego.link.transform.display-name": "To Services [Censys]",
+        "maltego.link.transform.run-date": "2024-06-08 12:35:47.307 +0100",
+        "target": "n12"
+      }
+    }
+  ]
+}

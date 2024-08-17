@@ -1,7 +1,7 @@
 extern crate dotenv;
 
 use dotenv::dotenv;
-use universal_graph_transformer::{graph_transformer, types::Graph};
+use universal_graph_transformer::{graph_transformer};
 
 mod template;
 
@@ -10,7 +10,7 @@ use axum::{
     body::Bytes,
     extract::{Multipart},
     http::StatusCode,
-    response::{IntoResponse, Json},
+    response::{IntoResponse},
     routing::{get, post},
     BoxError, Router,
 };
@@ -40,7 +40,7 @@ async fn main() -> io::Result<()>{
             (OUTPUT_DIRECTORY.to_owned
         ()));
 
-    let listener = TcpListener::bind("127.0.0.1:3000").await?;
+    let listener = TcpListener::bind("0.0.0.0:3000").await?;
     println!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await?;
 
