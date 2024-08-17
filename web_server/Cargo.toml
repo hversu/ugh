@@ -6,13 +6,15 @@ edition = "2021"
 [dependencies]
 askama = "0.12.1"
 axum = { version = "0.7.5", features = ["multipart"] }
-serde = { version = "1.0.204", features = ["derive"] }
-serde_json = "1.0.120"
-tokio = { version = "1.38.1", features = ["full"] }
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
 tokio-util = { version = "0.7", features = ["io"] }
-futures = "0.3"
-uuid = { version = "1", features = ["v4"] }
-dotenv = "0.15.0"
-universal_graph_transformer = { version = "0.1.0", path = "../universal_graph_transformer" }
-tower = { version = "0.4", features = ["util"] }
+futures.workspace = true
+uuid.workspace = true
+dotenv.workspace = true
+universal_graph_transformer = {path = "../universal_graph_transformer" }
+tower = { version = "0.5", features = ["util"] }
 tower-http = { version = "0.5.0", features = ["fs", "trace"] }
+collector = {path = "../collector" }
+merger = {path = "../merger" }

@@ -1,0 +1,274 @@
+{
+    "edges": [
+        {
+            "from": "GootLoader",
+            "to": "Windows",
+            "type": "targets"
+        },
+        {
+            "from": "GootLoader",
+            "to": "GootKit",
+            "type": "deploys"
+        },
+        {
+            "from": "GootLoader",
+            "to": "Cobalt Strike",
+            "type": "deploys"
+        },
+        {
+            "from": "GootLoader",
+            "to": "REvil ransomware",
+            "type": "deploys"
+        },
+        {
+            "from": "GootLoader",
+            "to": "SEO poisoning",
+            "type": "uses"
+        },
+        {
+            "from": "GootLoader",
+            "to": "Kronos malware",
+            "type": "downloads"
+        },
+        {
+            "from": "GootLoader",
+            "to": "ZIP archive",
+            "type": "delivered via"
+        },
+        {
+            "from": "GootLoader",
+            "to": "PowerShell",
+            "type": "executes via"
+        },
+        {
+            "from": "GootLoader",
+            "to": "JScript",
+            "type": "executes via"
+        },
+        {
+            "from": "GootLoader",
+            "to": "Osiris",
+            "type": "may lead to"
+        },
+        {
+            "from": "GootLoader",
+            "to": "Sodinokibi ransomware",
+            "type": "may lead to"
+        },
+        {
+            "from": "GootLoader",
+            "to": "WordPress",
+            "type": "targets"
+        },
+        {
+            "from": "GootLoader",
+            "to": "SystemBC",
+            "type": "deploys"
+        },
+        {
+            "from": "SEO Poisoning",
+            "to": "WordPress",
+            "type": "exploits"
+        },
+        {
+            "from": "UNC2565",
+            "to": "GootLoader",
+            "type": "uses"
+        },
+        {
+            "from": "UNC2565",
+            "to": "FONELAUNCH",
+            "type": "uses"
+        },
+        {
+            "from": "UNC2565",
+            "to": "GootLoader.POWERSHELL",
+            "type": "develops"
+        },
+        {
+            "from": "GootLoader",
+            "to": "compromised hosts",
+            "type": "delivers payloads to"
+        },
+        {
+            "from": "GootLoader",
+            "to": "GootLoader 3",
+            "type": "updated to"
+        },
+        {
+            "from": "GootLoader",
+            "to": "Hive0127",
+            "type": "linked to"
+        },
+        {
+            "from": "GootLoader",
+            "to": "Cobalt Strike",
+            "type": "delivers"
+        },
+        {
+            "from": "GootLoader",
+            "to": "IcedID",
+            "type": "delivers"
+        },
+        {
+            "from": "GootLoader",
+            "to": "UNC2565",
+            "type": "operated by"
+        },
+        {
+            "from": "Hive0127",
+            "to": "UNC2565",
+            "type": "also known as"
+        },
+        {
+            "from": "GootLoader",
+            "to": "transfer[.]sh/get/7i8rkw/Rufus_Pro_signed.exe",
+            "type": "linked to"
+        },
+        {
+            "from": "transfer[.]sh/get/7i8rkw/Rufus_Pro_signed.exe",
+            "to": "Lumma Stealer",
+            "type": "hosts"
+        },
+        {
+            "from": "Lumma Stealer",
+            "to": "ruflus[.]xyz",
+            "type": "distributed via"
+        },
+        {
+            "from": "\\AppData folder",
+            "to": "GootLoader",
+            "type": "witness"
+        },
+        {
+            "from": "46.28.105.94",
+            "to": "Cobalt Strike",
+            "type": "request"
+        },
+        {
+            "from": "hxxp://blog.lilianpraskova.cz/xmlrpc.php",
+            "to": "GootLoader",
+            "type": "hosted"
+        },
+        {
+            "from": "91.215.85.143:443",
+            "to": "Cobalt Strike",
+            "type": "communicated"
+        },
+        {
+            "from": "91.92.136.20:4001",
+            "to": "SystemBC",
+            "type": "communicated"
+        }
+    ],
+    "nodes": [
+        {
+            "type": "malware",
+            "value": "GootLoader"
+        },
+        {
+            "type": "affected_software",
+            "value": "Windows"
+        },
+        {
+            "type": "malware",
+            "value": "GootKit"
+        },
+        {
+            "type": "tool",
+            "value": "Cobalt Strike"
+        },
+        {
+            "type": "malware",
+            "value": "REvil ransomware"
+        },
+        {
+            "type": "tool",
+            "value": "SEO poisoning"
+        },
+        {
+            "type": "malware",
+            "value": "Kronos malware"
+        },
+        {
+            "type": "tool",
+            "value": "ZIP archive"
+        },
+        {
+            "type": "tool",
+            "value": "PowerShell"
+        },
+        {
+            "type": "tool",
+            "value": "JScript"
+        },
+        {
+            "type": "malware",
+            "value": "Osiris"
+        },
+        {
+            "type": "malware",
+            "value": "Sodinokibi ransomware"
+        },
+        {
+            "type": "affected_software",
+            "value": "WordPress"
+        },
+        {
+            "type": "tool",
+            "value": "SystemBC"
+        },
+        {
+            "type": "threat_actor",
+            "value": "UNC2565"
+        },
+        {
+            "type": "tool",
+            "value": "FONELAUNCH"
+        },
+        {
+            "type": "tool",
+            "value": "GootLoader.POWERSHELL"
+        },
+        {
+            "type": "malware",
+            "value": "GootLoader 3"
+        },
+        {
+            "type": "threat_actor",
+            "value": "Hive0127"
+        },
+        {
+            "type": "malware",
+            "value": "IcedID"
+        },
+        {
+            "type": "tool",
+            "value": "Lumma Stealer"
+        },
+        {
+            "type": "domain",
+            "value": "ruflus[.]xyz"
+        },
+        {
+            "type": "domain",
+            "value": "hxxp://blog.lilianpraskova.cz/xmlrpc.php"
+        },
+        {
+            "type": "tool",
+            "value": "transfer[.]sh/get/7i8rkw/Rufus_Pro_signed.exe"
+        },
+        {
+            "type": "ip",
+            "value": "46.28.105.94"
+        },
+        {
+            "type": "ip",
+            "value": "91.215.85.143:443"
+        },
+        {
+            "type": "ip",
+            "value": "91.92.136.20:4001"
+        }
+    ]
+}

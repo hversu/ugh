@@ -8,13 +8,14 @@ name = "universal_graph_transformer"
 path = "src/lib.rs"
 
 [dependencies]
-quick-xml = { version = "0.31.0", features = ["encoding"] }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-reqwest = { version = "0.11", features = ["json", "blocking"] }
-regex = "1.0"
-base64 = "0.13"
-chrono = "0.4"
-tokio = { version = "1", features = ["full"] }
-dotenv = "0.15.0"
-lazy_static = "1.4.0"
+quick-xml.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+reqwest.workspace = true
+regex.workspace = true
+base64.workspace = true
+chrono.workspace = true
+tokio.workspace = true
+dotenv.workspace = true
+lazy_static.workspace = true
+

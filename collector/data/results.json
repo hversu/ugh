@@ -1,0 +1,283 @@
+{
+    "edges": [
+        {
+            "from": "hversu",
+            "to": "Old Norse",
+            "type": "derived from"
+        },
+        {
+            "from": "Old Norse",
+            "to": "Faroese hvussu",
+            "type": "related to"
+        },
+        {
+            "from": "hversu",
+            "to": "how",
+            "type": "means"
+        },
+        {
+            "from": "how",
+            "to": "to what degree",
+            "type": "clarifies"
+        },
+        {
+            "from": "hversu",
+            "to": "Dictionary of Modern Icelandic",
+            "type": "featured in"
+        },
+        {
+            "from": "hversu",
+            "to": "ISLEX",
+            "type": "featured in"
+        },
+        {
+            "from": "Icelandic",
+            "to": "Old Norse",
+            "type": "derived from"
+        },
+        {
+            "from": "Icelandic",
+            "to": "lemmas",
+            "type": "classified as"
+        },
+        {
+            "from": "Icelandic",
+            "to": "adverbs",
+            "type": "classified to"
+        },
+        {
+            "from": "Hversu Noregr byggðist",
+            "to": "Old Norse: How Norway was inhabited",
+            "type": "is translated as"
+        },
+        {
+            "from": "Harald Fairhair",
+            "to": "Norway",
+            "type": "unites"
+        },
+        {
+            "from": "Fornjót",
+            "to": "Nór",
+            "type": "descended to"
+        },
+        {
+            "from": "Nór",
+            "to": "Norway",
+            "type": "is the first great king of"
+        },
+        {
+            "from": "Hversu Noregr byggðist",
+            "to": "Flateyjarbók",
+            "type": "survives in"
+        },
+        {
+            "from": "Hversu Noregr byggðist",
+            "to": "Old Norse",
+            "type": "is written in"
+        },
+        {
+            "from": "Old Norse",
+            "to": "Cleasby & Vigfusson Dictionary",
+            "type": "defined in"
+        },
+        {
+            "from": "Old Norwegian",
+            "to": "Johan Fritzner's Dictionary",
+            "type": "defined in"
+        },
+        {
+            "from": "adv",
+            "to": "adverb",
+            "type": "stands for"
+        },
+        {
+            "from": "Geir Zoëga",
+            "to": "A Concise Dictionary of Old Icelandic",
+            "type": "authored"
+        },
+        {
+            "from": "Hversu Noregr byggðist",
+            "to": "Orkneyinga saga",
+            "type": "parallels"
+        },
+        {
+            "from": "Halfdan the Old",
+            "to": "Harald Fairhair",
+            "type": "ancestor of"
+        },
+        {
+            "from": "Olaf IV of Norway",
+            "to": "Margaret",
+            "type": "son of"
+        },
+        {
+            "from": "Ættartölur",
+            "to": "1387",
+            "type": "written in"
+        },
+        {
+            "from": "Data",
+            "to": "Dictionary of Old Norse Prose",
+            "type": "derive from"
+        },
+        {
+            "from": "Data",
+            "to": "National Library of Iceland",
+            "type": "derive from"
+        },
+        {
+            "from": "Data",
+            "to": "Arnamagnæan Institutes",
+            "type": "derive from"
+        },
+        {
+            "from": "Data",
+            "to": "Skaldic Project",
+            "type": "derive from"
+        },
+        {
+            "from": "Data",
+            "to": "Stories for All Time",
+            "type": "derive from"
+        },
+        {
+            "from": "Content",
+            "to": "skaldic volumes",
+            "type": "licensed according to"
+        }
+    ],
+    "nodes": [
+        {
+            "type": "word",
+            "value": "hversu"
+        },
+        {
+            "type": "etymology",
+            "value": "Old Norse"
+        },
+        {
+            "type": "cognate",
+            "value": "Faroese hvussu"
+        },
+        {
+            "type": "definition",
+            "value": "how"
+        },
+        {
+            "type": "definition",
+            "value": "to what from"
+        },
+        {
+            "type": "further reading",
+            "value": "Dictionary of Modern Icelandic"
+        },
+        {
+            "type": "further reading",
+            "value": "ISLEX"
+        },
+        {
+            "type": "region",
+            "value": "Iceland"
+        },
+        {
+            "type": "definition",
+            "value": "lemmas"
+        },
+        {
+            "type": "definition",
+            "value": "adverbs"
+        },
+        {
+            "type": "word",
+            "value": "Hversu Noregr byggðist"
+        },
+        {
+            "type": "translation",
+            "value": "Old Norse: How Norway was inhabited"
+        },
+        {
+            "pagen-number": "1387",
+            "value": ""
+        },
+        {
+            "type": "region",
+            "value": "Norway"
+        },
+        {
+            "type": "person",
+            "value": "Nór"
+        },
+        {
+            "type": "definition",
+            "value": "Old Norwegian"
+        },
+        {
+            "type": "definition",
+            "value": "Cleasby & Vigfusson Dictionary"
+        },
+        {
+            "type": "definition",
+            "value": "Johan Fritzner's Dictionary"
+        },
+        {
+            "type": "abbreviation",
+            "value": "adv"
+        },
+        {
+            "type": "definition",
+            "value": "adverb"
+        },
+        {
+            "type": "definition",
+            "value": "Flateyjarbók"
+        },
+        {
+            "type": "definition",
+            "value": "Orkneyinga saga"
+        },
+        {
+            "type": "person",
+            "value": "Geir Zoëga"
+        },
+        {
+            "type": "person",
+            "value": "Halfdan the Old"
+        },
+        {
+            "type": "person",
+            "value": "Harald Fairhair"
+        },
+        {
+            "type": "person",
+            "value": "Olaf IV of Norway"
+        },
+        {
+            "type": "person",
+            "value": "Margaret"
+        },
+        {
+            "type": "region",
+            "value": "Iceland"
+        },
+        {
+            "type": "region",
+            "value": "Copenhagen"
+        },
+        {
+            "type": "word",
+            "value": "Data"
+        },
+        {
+            "type": "word",
+            "value": "Content"
+        },
+        {
+            "type": "word",
+            "value": "CC BY-SA 4.0"
+        },
+        {
+            "type": "dictionary",
+            "value": "Arnamagnæan Institutes"
+        }
+    ]
+}
