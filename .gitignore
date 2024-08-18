@@ -8,3 +8,5 @@ Cargo.lock
 .env
 target
 .vscode
+web_server/outputs/*
+web_server/uploads/*

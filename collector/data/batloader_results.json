@@ -1,0 +1,1069 @@
+{
+  "edges": [
+    {
+      "from": "VMware Carbon Black",
+      "to": "BatLoader",
+      "type": "detects and responds to"
+    },
+    {
+      "from": "Conti",
+      "to": "134.0.117.195",
+      "type": "utilizes"
+    },
+    {
+      "from": "BatLoader",
+      "to": "updatea1.com",
+      "type": "communicates with"
+    },
+    {
+      "from": "BatLoader",
+      "to": "cloudupdatesss.com",
+      "type": "communicates with"
+    },
+    {
+      "from": "BatLoader",
+      "to": "Mandiant",
+      "type": "is investigated by"
+    },
+    {
+      "from": "Junestherry Dela Cruz",
+      "to": "Trend Micro",
+      "type": "employs"
+    },
+    {
+      "from": "Batloader",
+      "to": "Water Minyades",
+      "type": "associated_with"
+    },
+    {
+      "from": "Water Minyades",
+      "to": "Qakbot",
+      "type": "deploys"
+    },
+    {
+      "from": "Water Minyades",
+      "to": "RaccoonStealer",
+      "type": "deploys"
+    },
+    {
+      "from": "Water Minyades",
+      "to": "Bumbleloader",
+      "type": "deploys"
+    },
+    {
+      "from": "Batloader",
+      "to": "United States",
+      "type": "targets"
+    },
+    {
+      "from": "Batloader",
+      "to": "Canada",
+      "type": "targets"
+    },
+    {
+      "from": "Noodle RAT",
+      "to": "China",
+      "type": "originates_from"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "PCrisk",
+      "type": "investigated by"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Zoom",
+      "type": "bundled with"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "TeamViewer",
+      "type": "bundled with"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Ursnif",
+      "type": "executes"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Cobalt Strike",
+      "type": "related to"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "ISFB",
+      "type": "related to"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "SystemBC",
+      "type": "related to"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Vidar",
+      "type": "related to"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "EugenLoader",
+      "type": "related to"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "IcedID",
+      "type": "related to"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "RedLine Stealer",
+      "type": "related to"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Hive",
+      "type": "related to"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Atera Agent",
+      "type": "used for distribution"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Zloader",
+      "type": "related to"
+    },
+    {
+      "from": "eSentire",
+      "to": "Microsoft",
+      "type": "partners with"
+    },
+    {
+      "from": "eSentire",
+      "to": "MOVEit Transfer",
+      "type": "reports vulnerability in"
+    },
+    {
+      "from": "eSentire",
+      "to": "CDK Global",
+      "type": "responds to incidents at"
+    },
+    {
+      "from": "Generative AI",
+      "to": "eSentire",
+      "type": "tools used by"
+    },
+    {
+      "from": "Cobalt Strike",
+      "to": "eSentire",
+      "type": "reported and analyzed by"
+    },
+    {
+      "from": "Vidar Stealer",
+      "to": "nerdculture[.]de/@yoxhyp",
+      "type": "communicates via"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Google Ads",
+      "type": "uses"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Vidar Stealer",
+      "type": "delivers"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Ursnif",
+      "type": "delivers"
+    },
+    {
+      "from": "eSentire",
+      "to": "BATLOADER",
+      "type": "analyzes"
+    },
+    {
+      "from": "Google Ads",
+      "to": "Adobe",
+      "type": "spoofs"
+    },
+    {
+      "from": "Google Ads",
+      "to": "OpenAPI",
+      "type": "spoofs"
+    },
+    {
+      "from": "Google Ads",
+      "to": "Spotify",
+      "type": "spoofs"
+    },
+    {
+      "from": "Google Ads",
+      "to": "has"
+    },
+    {
+      "from": "Google Ads",
+      "to": "Zoom",
+      "type": "spoofs"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Cobalt Strike",
+      "type": "delivers"
+    },
+    {
+      "from": "Malwarebytes",
+      "to": "Google Ads",
+      "type": "criticizes"
+    },
+    {
+      "from": "Microsoft",
+      "to": "Office",
+      "type": "blocks macros"
+    },
+    {
+      "from": "Uptycs",
+      "to": "BATLoader",
+      "type": "analyzes"
+    },
+    {
+      "from": "Nandakumar KJ",
+      "to": "Uptycs",
+      "type": "works_for"
+    },
+    {
+      "from": "Josh Lemon",
+      "to": "Uptycs",
+      "type": "works_for"
+    },
+    {
+      "from": "BATLoader",
+      "to": "PowerShell",
+      "type": "uses"
+    },
+    {
+      "from": "BATLoader",
+      "to": "zkoko.exe.gpg",
+      "type": "downloads"
+    },
+    {
+      "from": "BATLoader",
+      "to": "Nsudo.exe",
+      "type": "downloads"
+    },
+    {
+      "from": "BATLoader",
+      "to": "gpg4win-2.2.5.exe",
+      "type": "downloads"
+    },
+    {
+      "from": "BATLoader",
+      "to": "Windows Defender",
+      "type": "evades"
+    },
+    {
+      "from": "Nsudo.exe",
+      "to": "BATLoader",
+      "type": "facilitates"
+    },
+    {
+      "from": "BATLoader",
+      "to": "gpg4win-2.2.5.exe",
+      "type": "uses"
+    },
+    {
+      "from": "Uptycs",
+      "to": "KuppingerCole",
+      "type": "is_positioned_by"
+    },
+    {
+      "from": "Uptycs",
+      "to": "CNAPP",
+      "type": "categorized_as"
+    },
+    {
+      "from": "CNAPP",
+      "to": "Gartner",
+      "type": "recognized_by"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "AgentTesla",
+      "type": "delivers"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Ransomware",
+      "type": "delivers"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "RATs",
+      "type": "delivers"
+    },
+    {
+      "from": "BATLOADER",
+      "to": "Cryptojackers",
+      "type": "delivers"
+    },
+    {
+      "from": "Shrutirupa Banerjiee",
+      "to": "SEQRITE",
+      "type": "works at"
+    },
+    {
+      "from": "BATLOADER",
+      "to": ".NET executable",
+      "type": "loads"
+    },
+    {
+      "from": "Microsoft",
+      "to": "CVE-2024-21412",
+      "type": "has vulnerability"
+    },
+    {
+      "from": "Cyble",
+      "to": "Cyble Vision",
+      "type": "develops"
+    },
+    {
+      "from": "Cyble",
+      "to": "Cyble Hawk",
+      "type": "develops"
+    },
+    {
+      "from": "Cyble",
+      "to": "AmIBreached",
+      "type": "develops"
+    },
+    {
+      "from": "Cyble",
+      "to": "Odin by Cyble",
+      "type": "develops"
+    },
+    {
+      "from": "Cyble",
+      "to": "The Cyber Express",
+      "type": "publishes"
+    },
+    {
+      "from": "Cyble",
+      "to": "CRIL",
+      "type": "operates"
+    },
+    {
+      "from": "CRIL",
+      "to": "QuasarRAT",
+      "type": "analyzes"
+    },
+    {
+      "from": "CRIL",
+      "to": "AsyncRAT",
+      "type": "analyzes"
+    },
+    {
+      "from": "Spam email",
+      "to": "QuasarRAT",
+      "type": "delivers"
+    },
+    {
+      "from": "Spam email",
+      "to": "AsyncRAT",
+      "type": "delivers"
+    },
+    {
+      "from": "Spam email",
+      "to": "DCRAT",
+      "type": "delivers"
+    },
+    {
+      "from": "Spam email",
+      "to": "Stormkitty",
+      "type": "delivers"
+    },
+    {
+      "from": "Spam email",
+      "to": "RedLine",
+      "type": "delivers"
+    },
+    {
+      "from": "Water Minyades",
+      "to": "Pyarmor Pro",
+      "type": "utilizes"
+    },
+    {
+      "from": "Batloader",
+      "to": "Pyarmor Pro",
+      "type": "utilizes"
+    },
+    {
+      "from": "Batloader",
+      "to": "countingstatistic[.]com",
+      "type": "communicates with"
+    },
+    {
+      "from": "framework.py",
+      "to": "Ursnif",
+      "type": "delivers"
+    },
+    {
+      "from": "framework.py",
+      "to": "Vidar",
+      "type": "delivers"
+    },
+    {
+      "from": "framework.py",
+      "to": "Redline Stealer",
+      "type": "delivers"
+    },
+    {
+      "from": "framework.py",
+      "to": "countingstatist[.]com",
+      "type": "sends data to"
+    },
+    {
+      "from": "Trend Vision One",
+      "to": "Batloader",
+      "type": "detects"
+    }
+  ],
+  "nodes": [
+    {
+      "type": "organization",
+      "value": "VMware Carbon Black"
+    },
+    {
+      "type": "organization",
+      "value": "Mandiant"
+    },
+    {
+      "type": "threat_actor",
+      "value": "Conti"
+    },
+    {
+      "type": "malware",
+      "value": "BatLoader"
+    },
+    {
+      "_type": "malware",
+      "value": "ZLoader"
+    },
+    {
+      "type": "ip",
+      "value": "134.0.117.195"
+    },
+    {
+      "type": "domain",
+      "value": "updatea1.com"
+    },
+    {
+      "type": "domain",
+      "value": "cloudupdatesss.com"
+    },
+    {
+      "type": "organization",
+      "value": "Trend Micro"
+    },
+    {
+      "type": "country",
+      "value": "United States"
+    },
+    {
+      "type": "country",
+      "value": "Canada"
+    },
+    {
+      "type": "person",
+      "value": "Junestherry Dela Cruz"
+    },
+    {
+      "type": "threat_actor",
+      "value": "Water Minyades"
+    },
+    {
+      "type": "organization",
+      "value": "Mandiant"
+    },
+    {
+      "type": "malware",
+      "value": "Batloader"
+    },
+    {
+      "type": "malware",
+      "value": "Qakbot"
+    },
+    {
+      "type": "malware",
+      "value": "RaccoonStealer"
+    },
+    {
+      "type": "malware",
+      "value": "Bumbleloader"
+    },
+    {
+      "type": "tool",
+      "value": "NirCmd.exe"
+    },
+    {
+      "type": "tool",
+      "value": "Nsudo.exe"
+    },
+    {
+      "type": "tool",
+      "value": "Gpg4win"
+    },
+    {
+      "type": "malware",
+      "value": "Ursnif"
+    },
+    {
+      "type": "malware",
+      "value": "Vidar"
+    },
+    {
+      "type": "malware",
+      "value": "ZLoader"
+    },
+    {
+      "type": "malware",
+      "value": "Cobalt Strike"
+    },
+    {
+      "type": "malware",
+      "value": "SmokeLoader"
+    },
+    {
+      "type": "malware",
+      "value": "Royal ransomware"
+    },
+    {
+      "type": "tool",
+      "value": "Syncro"
+    },
+    {
+      "type": "tool",
+      "value": "Atera"
+    },
+    {
+      "type": "tool",
+      "value": "Trend Vision One"
+    },
+    {
+      "type": "tool",
+      "value": "Advanced Installer software"
+    },
+    {
+      "type": "tool",
+      "value": "Windows Installer XML (WiX) toolset"
+    },
+    {
+      "type": "tool",
+      "value": "PyArmor"
+    },
+    {
+      "type": "malware",
+      "value": "Noodle RAT"
+    },
+    {
+      "type": "event",
+      "value": "MITRE ENGENUITY ATT&CK"
+    },
+    {
+      "type": "organization",
+      "value": "PCrisk"
+    },
+    {
+      "type": "malware",
+      "value": "BATLOADER"
+    },
+    {
+      "type": "malware",
+      "value": "Ursnif"
+    },
+    {
+      "type": "tool",
+      "value": "Zoom"
+    },
+    {
+      "type": "tool",
+      "value": "TeamViewer"
+    },
+    {
+      "type": "tool",
+      "value": "Visual Studio"
+    },
+    {
+      "type": "organization",
+      "value": "Seqrite"
+    },
+    {
+      "type": "organization",
+      "value": "Trend Micro"
+    },
+    {
+      "type": "organization",
+      "value": "eSentire"
+    },
+    {
+      "type": "malware",
+      "value": "Cobalt Strike"
+    },
+    {
+      "type": "malware",
+      "value": "ISFB"
+    },
+    {
+      "type": "malware",
+      "value": "SystemBC"
+    },
+    {
+      "type": "malware",
+      "value": "Vidar"
+    },
+    {
+      "type": "organization",
+      "value": "Intel 471"
+    },
+    {
+      "type": "malware",
+      "value": "EugenLoader"
+    },
+    {
+      "type": "malware",
+      "value": "IcedID"
+    },
+    {
+      "type": "organization",
+      "value": "NTT Security"
+    },
+    {
+      "type": "malware",
+      "value": "RedLine Stealer"
+    },
+    {
+      "type": "organization",
+      "value": "Kroll"
+    },
+    {
+      "type": "malware",
+      "value": "Hive"
+    },
+    {
+      "type": "organization",
+      "value": "vmware"
+    },
+    {
+      "type": "organization",
+      "value": "Mandiant"
+    },
+    {
+      "type": "tool",
+      "value": "Atera Agent"
+    },
+    {
+      "type": "malware",
+      "value": "Zloader"
+    },
+    {
+      "type": "organization",
+      "value": "Medium walmartglobaltech"
+    },
+    {
+      "type": "organization",
+      "value": "eSentire"
+    },
+    {
+      "type": "organization",
+      "value": "Microsoft"
+    },
+    {
+      "type": "person",
+      "value": "Elite Threat Hunters"
+    },
+    {
+      "type": "organization",
+      "value": "CDK Global"
+    },
+    {
+      "type": "country",
+      "value": "Waterloo, ON"
+    },
+    {
+      "type": "tool",
+      "value": "Generative AI"
+    },
+    {
+      "type": "organization",
+      "value": "MSSPs"
+    },
+    {
+      "type": "malware",
+      "value": "Cobalt Strike"
+    },
+    {
+      "type": "tool",
+      "value": "MOVEit Transfer"
+    },
+    {
+      "type": "threat",
+      "value": "CVE-2024-5806"
+    },
+    {
+      "type": "person",
+      "value": "Kancelaria Adwokacka Adwokat Aleksandra Krzemińska"
+    },
+    {
+      "type": "hash",
+      "value": "MD5: 3aaf34ffbe45e4f54b37392ad1afe9a5"
+    },
+    {
+      "type": "hash",
+      "value": "d655.dll.gpg"
+    },
+    {
+      "type": "malware",
+      "value": "Vidar Stealer"
+    },
+    {
+      "type": "domain",
+      "value": "updatea1[.]com"
+    },
+    {
+      "type": "domain",
+      "value": "cloudupdatesss[.]com"
+    },
+    {
+      "type": "domain",
+      "value": "externalchecksso[.]com"
+    },
+    {
+      "type": "domain",
+      "value": "internalcheckssso[.]com"
+    },
+    {
+      "type": "url",
+      "value": "t[.]me/trampapanam"
+    },
+    {
+      "type": "url",
+      "value": "nerdculture[.]de/@yoxhyp"
+    },
+    {
+      "type": "malware",
+      "value": "BATLOADER"
+    },
+    {
+      "type": "tool",
+      "value": "Google Ads"
+    },
+    {
+      "type": "malware",
+      "value": "Vidar Stealer"
+    },
+    {
+      "type": "malware",
+      "value": "Ursnif"
+    },
+    {
+      "type": "organization",
+      "value": "eSentire"
+    },
+    {
+      "type": "organization",
+      "value": "Adobe"
+    },
+    {
+      "type": "organization",
+      "value": "OpenAPI"
+    },
+    {
+      "type": "tool",
+      "value": "ChatGPT"
+    },
+    {
+      "type": "organization",
+      "value": "Spotify"
+    },
+    {
+      "type": "organization",
+      "value": "Tableau"
+    },
+    {
+      "type": "organization",
+      "value": "Zoom"
+    },
+    {
+      "type": "malware",
+      "value": "Cobalt Strike"
+    },
+    {
+      "type": "organization",
+      "value": "Malwarebytes"
+    },
+    {
+      "type": "organization",
+      "value": "Microsoft"
+    },
+    {
+      "type": "organization",
+      "value": "Uptycs"
+    },
+    {
+      "type": "person",
+      "value": "Nandakumar KJ"
+    },
+    {
+      "type": "person",
+      "value": "Josh Lemon"
+    },
+    {
+      "break": "malware",
+      "grab": "BATLoader"
+    },
+    {
+      "break": "malware",
+      "grab": "Arkei/Vidar"
+    },
+    {
+      "break": "malware",
+      "grab": "Ursnif"
+    },
+    {
+      "break": "malware",
+      "grab": "Cobalt Strike Beacon"
+    },
+    {
+      "break": "malware",
+      "grab": "Rhadamanthys"
+    },
+    {
+      "break": "tool",
+      "grab": "PowerShell"
+    },
+    {
+      "break": "malware",
+      "grab": "zkoko.exe.gpg"
+    },
+    {
+      "break": "tool",
+      "grab": "Nsudo.exe"
+    },
+    {
+      "type": "tool",
+      "value": "gpg4win-2.2.5.exe"
+    },
+    {
+      "type": "malware",
+      "value": "zkoko.exe"
+    },
+    {
+      "type": "organization",
+      "value": "KuppingerCole"
+    },
+    {
+      "value": ": "
+    },
+    {
+      "break": "domain",
+      "grab": "job-lionserver.site"
+    },
+    {
+      "break": "url",
+      "grab": "www.virustotal.com/gui/file/19896a23d7b054625c2f6b1ee1551a0da68ad25cddbb24510a3b74578418e618"
+    },
+    {
+      "grab": "www.virustoid.com/gui/file/43894c287c3ebccd30cd761dd4826518073773180ae0ab28355d604b44071441",
+      "value": "url"
+    },
+    {
+      "grab": "CNAPP",
+      "value": "threat_actor"
+    },
+    {
+      "grab": "Gartner",
+      "value": "organization"
+    },
+    {
+      "grab": "job-lionserver.ru",
+      "top": "domain"
+    },
+    {
+      "grab": "81.177.165.87",
+      "top": "ip"
+    },
+    {
+      "grab": "185.199.111.133",
+      "top": "ip"
+    },
+    {
+      "grab": "79.137.204.54",
+      "top": "ip"
+    },
+    {
+      "type": "malware",
+      "value": "BATLOADER"
+    },
+    {
+      "type": "malware",
+      "value": "AgentTesla"
+    },
+    {
+      "type": "malware",
+      "value": "Ransomware"
+    },
+    {
+      "type": "malware",
+      "value": "RATs"
+    },
+    {
+      "type": "malware",
+      "value": "Cryptojackers"
+    },
+    {
+      "type": "person",
+      "value": "Shrutirupa Banerjiee"
+    },
+    {
+      "type": "organization",
+      "value": "SEQRITE"
+    },
+    {
+      "type": "tool",
+      "value": ".NET executable"
+    },
+    {
+      "type": "organization",
+      "value": "Microsoft"
+    },
+    {
+      "type": "threat",
+      "value": "CVE-2024-21412"
+    },
+    {
+      "type": "organization",
+      "value": "Cyble"
+    },
+    {
+      "type": "tool",
+      "value": "Cyble Vision"
+    },
+    {
+      "type": "tool",
+      "value": "Cyble Hawk"
+    },
+    {
+      "type": "tool",
+      "value": "AmIBreached"
+    },
+    {
+      "mathematicaia Odyssey themed game-version": "type- is tool"
+    },
+    {
+      "type": "tool",
+      "value": "The Cyber Express"
+    },
+    {
+      "type": "organization",
+      "value": "CRIL"
+    },
+    {
+      "type": "malware",
+      "value": "QuasarRAT"
+    },
+    {
+      "type": "malware",
+      "value": "AsyncRAT"
+    },
+    {
+      "type": "malware",
+      "value": "DCRAT"
+    },
+    {
+      "type": "malware",
+      "value": "Stormkitty"
+    },
+    {
+      "type": "malware",
+      "value": "RedLine"
+    },
+    {
+      "type": "hash",
+      "value": "Bill.exe"
+    },
+    {
+      "type": "hash",
+      "value": "Bill.bat"
+    },
+    {
+      "type": "hash",
+      "value": "tmp995D.exe"
+    },
+    {
+      "type": "campaign",
+      "value": "Spam email"
+    },
+    {
+      "type": "hash",
+      "value": "SHIPMENT_DOCUMENTS.one"
+    },
+    {
+      "type": "hash",
+      "value": "Update.bat"
+    },
+    {
+      "type": "hash",
+      "value": "tmp3680.tmp"
+    },
+    {
+      "type": "tool",
+      "value": "Batch file"
+    },
+    {
+      "type": "tool",
+      "value": "Trend Vision One"
+    },
+    {
+      "type": "tool",
+      "value": "Pyarmor Pro"
+    },
+    {
+      "type": "malware",
+      "value": "Batloader"
+    },
+    {
+      "type": "threat_actor",
+      "value": "Water Minyades"
+    },
+    {
+      "type": "domain",
+      "value": "countingstatistic[.]com"
+    },
+    {
+      "type": "malware",
+      "value": "Ursnif"
+    },
+    {
+      "type": "malware",
+      "value": "Vidar"
+    },
+    {
+      "type": "malware",
+      "value": "Redline Stealer"
+    },
+    {
+      "type": "malware",
+      "value": "Royal"
+    },
+    {
+      "type": "malware",
+      "value": "BlackSuit"
+    },
+    {
+      "type": "person",
+      "value": "Junestherry Dela Cruz"
+    }
+  ]
+}
