@@ -502,37 +502,62 @@
             drawMainChart(data);
         })
 
-        function drawMainChart(data) {
-            data.nodes.forEach(d => d.id = 'n' + d.id)
-            data.links = data.edges;
+      function drawMainChart(data) {
+        data.nodes.forEach(d => d.id = 'n' + d.id)
+        data.links = data.edges;
 
-            const dropdown = document.getElementById('graph-filter-dropdown');
+        const dropdown = document.getElementById('graph-filter-dropdown');
+        let dragInProgress = false;
 
-            const Graph = ForceGraph()
-                (document.getElementById('graph-container'))
-                .width(800)
-                .height(800)
-                .nodeId('id')
-                .nodeVal(7)
-                .nodeColor(node => "#aaaaaa")
-                .nodeRelSize(4)
-                .zoom(0.6)
-                .nodeLabel(node => `<div style='background-color:red color:"blue"'> ${node.id}<br> <div class=${node.properties["service.name"] ? "" : "hidden"} >${node.properties["service.name"]}</div> <div class=${node.properties["banner.text"] ? "" : "hidden"} >${node.properties["banner.text"]}</div></div>`)
-                .linkSource('source')
-                .linkTarget('target')
-                .nodeCanvasObjectMode(() => "after")
-                .nodeCanvasObject((node, ctx, globalScale) => {
-                    if (dropdown.value === 'labels') {
-                        const label = node.label.substring(0, 64);
-                        console.log(label)
-                        const fontSize = 56 / globalScale;
+        const Graph = ForceGraph()
+            (document.getElementById('graph-container'))
+            .width(800)
+            .height(800)
+            .nodeId('id')
+            .nodeVal(7)
+            .nodeColor(node => "#aaaaaa")
+            .nodeRelSize(4)
+            .zoom(0.6)
+            .nodeLabel(node => `<div style='background-color:red color:"blue"'> ${node.id}<br> <div class=${node.properties["service.name"] ? "" : "hidden"} >${node.properties["service.name"]}</div> <div class=${node.properties["banner.text"] ? "" : "hidden"} >${node.properties["banner.text"]}</div></div>`)
+            .linkSource('source')
+            .linkTarget('target')
+            .onNodeDrag(() => {
+                dragInProgress = true;
+                Graph.d3AlphaTarget(0);
+                if (dragInProgress) {
+                    node.fx = translate.x;
+                    node.fy = translate.y;
+                    Graph.d3ReheatSimulation();
+                }
+            })
+            .onNodeDragEnd((node) => {
+                dragInProgress = false;
+                node.fx = node.x;
+                node.fy = node.y;
+                Graph.d3AlphaTarget(0);
+            })
+            .d3Force('link', d3.forceLink().distance(100))
+            .nodeCanvasObjectMode(() => "after")
+            .nodeCanvasObject((node, ctx, globalScale) => {
+                if (dropdown.value === 'labels') {
+                    const label = node.label.substring(0, 64);
+                    const fontSize = 18 / globalScale;
+                    if (fontSize < 2) return; // Don't render if too small
+
+                    ctx.font = `${fontSize}px Sans-Serif`;
+                    const textWidth = ctx.measureText(label).width;
+                    
+                    // Only render if in view
+                    if (node.x + textWidth/2 > 0 && node.x - textWidth/2 < ctx.canvas.width &&
+                        node.y + fontSize > 0 && node.y - fontSize < ctx.canvas.height) {
                         ctx.textAlign = "center";
                         ctx.textBaseline = "middle";
                         ctx.fillStyle = "black";
                         ctx.fillText(label, node.x, node.y + 20);
                     }
-                })
-                .graphData(data);
+                }
+            })
+            .graphData(data);
 
             dropdown.addEventListener('change', function () {
                 Graph.nodeCanvasObject((node, ctx, globalScale) => {
