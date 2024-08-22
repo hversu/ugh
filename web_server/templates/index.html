@@ -71,6 +71,7 @@
 
         #sidebar.collapsed button {
             padding: 10px 5px;
+            word-wrap: break-word;
         }
 
         #main {
@@ -125,6 +126,7 @@
         #right-panel .input-container,
         #right-panel .output-container {
             margin-bottom: 20px;
+            border-bottom: 2px solid #9e9e9e;
         }
 
         #right-panel .input-container label,
@@ -133,11 +135,13 @@
             margin-bottom: 5px;
             color: #2c3e50;
             font-weight: bold;
+            font-size: 13px;
         }
 
         #right-panel .input-container select,
         #right-panel .input-container input[type="text"],
         #right-panel .input-container input[type="file"],
+        #right-panel .input-container textarea,
         #right-panel .input-container button {
             width: 100%;
             padding: 10px;
@@ -157,6 +161,16 @@
 
         #right-panel .input-container button:hover {
             background: #2980b9;
+        }
+
+        #right-panel .input-container .input-group {
+            border: 1px solid #ccc;
+            padding: 10px 10px 5px;
+            margin-bottom: 5px;
+        }
+        #right-panel .input-container .input-group p {
+            margin: 0;
+            text-align: center;
         }
 
         .output-container {
@@ -344,22 +358,21 @@
                         <button hx-get="/delete" hx-target="#graph-container">DELETE</button>
                         <button hx-get="/generate-key" hx-target="#graph-container">Generate Key</button>
                     </div>
-                </div>
-                <div>
                     <button onclick="toggleSubmenu('api-keys')">API Keys</button>
                     <div id="api-keys" class="submenu">
                         <button hx-get="/api-keys/manage" hx-target="#graph-container">Manage API Keys</button>
                     </div>
                 </div>
+        </button>
     </div>
     <div id="main">
-        <div class="graph-filter-container">
-            <select id="graph-filter-dropdown">
-                <option value="auto">Auto</option>
-                <option value="labels">Labels</option>
-                <option value="No labels">No labels </option>
-            </select>
-        </div>
+<!--        <div class="graph-filter-container">-->
+<!--            <select id="graph-filter-dropdown">-->
+<!--                <option value="auto">Auto</option>-->
+<!--                <option value="labels">Labels</option>-->
+<!--                <option value="No labels">No labels </option>-->
+<!--            </select>-->
+<!--        </div>-->
         <div id="graph-container">
 
             <!-- Placeholder for the graph visualization -->
@@ -376,11 +389,22 @@
                 <option value="vtapi">vtapi</option>
             </select>
         </div>
-        <!--    <div class="input-container">-->
-        <!--        <label for="text-input">Text Input</label>-->
-        <!--        <input type="text" id="text-input" placeholder="Enter text">-->
-        <!--        <button onclick="submitText()">Submit Text</button>-->
-        <!--    </div>-->
+        <div class="input-container">
+            <div class="input-group">
+                <label for="text-input">Text / URL Input</label>
+                <input type="text" id="text-input" placeholder="Enter text / url">
+                <p>or</p>
+                <label for="file-input">Load .txt File</label>
+                <input type="file" id="txt-file-input" accept=".txt">
+                <label for="text-input-entities">Entities</label>
+                <textarea
+                    id="text-input-entities"
+                    placeholder="Enter entities. (like - country,language,culture,era,usage,english_translation)"
+                    rows="4"
+                ></textarea>
+            </div>
+            <button onclick="submitText()">Submit Text</button>
+        </div>
         <div class="input-container">
             <label for="file-input">Load .graphml File</label>
             <input type="file" id="file-input" accept=".graphml">
@@ -454,19 +478,42 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        function submitText() {
-            const textInput = document.getElementById('text-input').value;
-            document.getElementById('output').innerText = textInput;
+        function isValidUrl(string) {
+            try {
+                new URL(string);
+            } catch (_) {
+                return false;
+            }
+            return true;
         }
 
-        function loadFile() {
-            const fileInput = document.getElementById('file-input').files[0];
-            if (fileInput) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById('output').innerText = e.target.result;
-                };
-                reader.readAsText(fileInput);
+        async function submitText() {
+            try {
+                const textInput = document.getElementById('text-input').value;
+                const txtFileInput = document.getElementById('txt-file-input').files[0];
+                let data = '';
+                if(txtFileInput) {
+                    data = await txtFileInput.text();
+                } else {
+                    data = textInput;
+                }
+                const entities = document.getElementById('text-input-entities').value;
+                const isUrl = isValidUrl(data);
+                const response = await fetch('/text-submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data,
+                        entities,
+                        isUrl
+                    })
+                });
+                const output = await response.text();
+                document.getElementById('output').innerText = output;
+            } catch (error) {
+                console.error('Error submitting text:', error);
             }
         }
 

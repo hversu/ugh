@@ -13,7 +13,7 @@ use crate::my_secret::OPENAI_KEY;
 mod googler;
 mod simparse;
 mod gptcall;
-mod gptextract;
+pub mod gptextract;
 mod my_secret;
 mod types;
 

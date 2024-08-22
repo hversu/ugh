@@ -47,7 +47,7 @@ pub async fn transform_graph(
     Ok(())
 }
 
-fn save_json<T: Serialize>(data: &T, filename: &str) -> Result<(), Box<dyn Error>> {
+pub fn save_json<T: Serialize>(data: &T, filename: &str) -> Result<(), Box<dyn Error>> {
     let file = File::create(filename)?;
     let writer = BufWriter::new(file);
     serde_json::to_writer_pretty(writer, data)?;
