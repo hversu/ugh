@@ -54,7 +54,7 @@ async fn main() -> io::Result<()>{
 // Handler that accepts a multipart form upload and streams each field to a file.
 async fn accept_form(mut multipart: Multipart) -> Result<String, (StatusCode, String)> {
     let mut file_path = UPLOADS_DIRECTORY.to_owned();
-    let my_uuid = Uuid::new_v4();
+    let my_uuid = get_time_stamp();
     let output_path = format!("{}/{}.json", OUTPUT_DIRECTORY, my_uuid);
     while let Ok(Some(field)) = multipart.next_field().await {
         // Generate a random UUID
@@ -73,6 +73,12 @@ async fn accept_form(mut multipart: Multipart) -> Result<String, (StatusCode, St
     Ok(output_path)
 }
 
+pub fn get_time_stamp() -> u64 {
+    let now = std::time::SystemTime::now();
+    let since_the_epoch = now.duration_since(std::time::UNIX_EPOCH).unwrap();
+    since_the_epoch.as_secs() * 1000 +
+        since_the_epoch.subsec_nanos() as u64 / 1_000_000
+}
 
 // Save a `Stream` to a file
 async fn stream_to_file<S, E>(path: &str, stream: S) -> Result<(), (StatusCode, String)>
