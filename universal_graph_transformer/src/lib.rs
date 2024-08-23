@@ -8,7 +8,7 @@ use std::process;
 mod graphml_parser;
 mod input_type;
 mod mysecret;
-mod transform;
+pub mod transform;
 pub mod types;
 mod vt_api;
 mod vt_parser;

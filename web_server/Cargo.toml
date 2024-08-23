@@ -18,3 +18,4 @@ tower = { version = "0.5", features = ["util"] }
 tower-http = { version = "0.5.0", features = ["fs", "trace"] }
 collector = {path = "../collector" }
 merger = {path = "../merger" }
+anyhow.workspace = true

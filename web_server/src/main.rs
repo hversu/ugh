@@ -4,6 +4,8 @@ use dotenv::dotenv;
 use universal_graph_transformer::{graph_transformer, types::Graph};
 
 mod template;
+mod models;
+mod handlers;
 
 use uuid::Uuid;
 use axum::{
@@ -24,7 +26,8 @@ use std::io;
 use tokio::{fs::File, io::BufWriter};
 use tokio_util::io::StreamReader;
 use tokio::net::TcpListener;
-use template::{HtmlTemplate, IndexTemplate};
+use crate::handlers::index;
+use crate::handlers::text_submit::handle_text_submit;
 
 const UPLOADS_DIRECTORY: &str = "uploads";
 const OUTPUT_DIRECTORY: &str = "outputs";
@@ -36,20 +39,17 @@ async fn main() -> io::Result<()>{
     let app = Router::new()
         .route("/", get(index))
         .route("/upload", post(accept_form))
-        .nest_service(format!("/{}", OUTPUT_DIRECTORY.to_owned()).as_str(), ServeDir::new
-            (OUTPUT_DIRECTORY.to_owned
-        ()));
+        .route("/text-submit", post(handle_text_submit))
+        .nest_service(format!("/{}", OUTPUT_DIRECTORY.to_owned()).as_str(),
+            ServeDir::new(OUTPUT_DIRECTORY.to_owned()));
 
     let listener = TcpListener::bind("0.0.0.0:3000").await?;
     println!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await?;
-
     Ok(())
 }
 
-async fn index() -> impl IntoResponse {
-    HtmlTemplate(IndexTemplate {})
-}
+
 
 // Handler that accepts a multipart form upload and streams each field to a file.
 async fn accept_form(mut multipart: Multipart) -> Result<String, (StatusCode, String)> {
