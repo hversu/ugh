@@ -4,7 +4,7 @@ use uuid::Uuid;
 use collector::{gptextract};
 use universal_graph_transformer::transform::save_json;
 use crate::models::text_submit::TextSubmitInput;
-use crate::OUTPUT_DIRECTORY;
+use crate::{get_time_stamp, OUTPUT_DIRECTORY};
 
 pub async fn handle_text_submit(payload: Json<TextSubmitInput>) -> Result<String, (StatusCode, String)> {
     println!("The text submitted is a URL: {}", payload.data);
@@ -30,7 +30,7 @@ pub async fn handle_text_submit(payload: Json<TextSubmitInput>) -> Result<String
         }
     };
 
-    let my_uuid = Uuid::new_v4();
+    let my_uuid = get_time_stamp();
     let output_path = format!("{}/{}.json", OUTPUT_DIRECTORY, my_uuid);
 
     match save_json(&output_path, &data) {
