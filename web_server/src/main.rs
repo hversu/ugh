@@ -23,6 +23,7 @@ use tower_http::{
 };
 use futures::{Stream, TryStreamExt};
 use std::io;
+use axum::routing::get_service;
 use tokio::{fs::File, io::BufWriter};
 use tokio_util::io::StreamReader;
 use tokio::net::TcpListener;
@@ -32,6 +33,9 @@ use crate::handlers::text_submit::handle_text_submit;
 const UPLOADS_DIRECTORY: &str = "uploads";
 const OUTPUT_DIRECTORY: &str = "outputs";
 
+fn routes_static() -> Router {
+    Router::new().nest_service("/", get_service(ServeDir::new("./")))
+}
 
 #[tokio::main]
 async fn main() -> io::Result<()>{
@@ -40,8 +44,7 @@ async fn main() -> io::Result<()>{
         .route("/", get(index))
         .route("/upload", post(accept_form))
         .route("/text-submit", post(handle_text_submit))
-        .nest_service(format!("/{}", OUTPUT_DIRECTORY.to_owned()).as_str(),
-            ServeDir::new(OUTPUT_DIRECTORY.to_owned()));
+        .nest_service(format!("/{}", OUTPUT_DIRECTORY.clone()).as_str(), get_service(ServeDir::new(OUTPUT_DIRECTORY.to_owned())));
 
     let listener = TcpListener::bind("0.0.0.0:3000").await?;
     println!("listening on {}", listener.local_addr().unwrap());

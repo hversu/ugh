@@ -366,13 +366,13 @@
         </button>
     </div>
     <div id="main">
-<!--        <div class="graph-filter-container">-->
-<!--            <select id="graph-filter-dropdown">-->
-<!--                <option value="auto">Auto</option>-->
-<!--                <option value="labels">Labels</option>-->
-<!--                <option value="No labels">No labels </option>-->
-<!--            </select>-->
-<!--        </div>-->
+        <div class="graph-filter-container">
+            <select id="graph-filter-dropdown">
+                <option value="auto">Auto</option>
+                <option value="labels">Labels</option>
+                <option value="No labels">No labels </option>
+            </select>
+        </div>
         <div id="graph-container">
 
             <!-- Placeholder for the graph visualization -->
@@ -530,6 +530,9 @@
                 })
                     .then(response => response.text())
                     .then(data => {
+                        d3.json(data).then(function (data) {
+                            drawMainChart(data);
+                        })
                         fetch(data)
                             .then(response => response.text())
                             .then(data => {
