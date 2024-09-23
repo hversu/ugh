@@ -45,8 +45,8 @@ impl Properties {
         for (key, value) in props {
             if key == "id" {
                 id = Properties::get_id_from_str(&value);
-            } else {
-                other.insert(key, value);
+            }  else {
+                other.insert(key, Properties::remove_n_e_prefix(&value));
             }
         }
         Properties { id, other }
@@ -87,6 +87,9 @@ impl Properties {
             Ok(id) => Some(id),
             Err(_) => None,
         }
+    }
+    pub fn remove_n_e_prefix(value: &str) -> String {
+        value.replace("n", "").replace("e", "")
     }
 }
 
