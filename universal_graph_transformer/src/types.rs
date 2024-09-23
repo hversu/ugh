@@ -45,8 +45,12 @@ impl Properties {
         for (key, value) in props {
             if key == "id" {
                 id = Properties::get_id_from_str(&value);
-            }  else {
-                other.insert(key, Properties::remove_n_e_prefix(&value));
+            } else if key == "source" {
+                other.insert("source".to_string(), Properties::remove_n_e_prefix(&value));
+            } else if key == "target" {
+                other.insert("target".to_string(), Properties::remove_n_e_prefix(&value));
+            } else {
+                other.insert(key, value);
             }
         }
         Properties { id, other }
