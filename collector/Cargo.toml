@@ -13,3 +13,4 @@ reqwest.workspace=true
 select = "0.6.0"
 futures.workspace=true
 anyhow.workspace=true
+lazy_static = "1.5.0"

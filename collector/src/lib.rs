@@ -8,7 +8,7 @@ use anyhow::Result;
 use tokio;
 
 use crate::gptcall::call_openai_chat;
-use crate::my_secret::OPENAI_KEY;
+use crate::my_secret::get_openai_key_var;
 
 mod googler;
 mod simparse;
@@ -124,7 +124,7 @@ async fn process() -> Result<(), Box<dyn Error>> {
 
     let response = call_openai_chat("you are a data hygiene bot that takes a JSON structure and returns a JSON structure, 
                                         reducing redundant node/edge names/types WITHOUT losing information.", 
-                                        &constructed_prompt, OPENAI_KEY).await?;
+                                        &constructed_prompt, get_openai_key_var()).await?;
     
      // Parse the JSON string into a serde_json::Value
     let v: Value = serde_json::from_str(&response)?;

@@ -2,7 +2,7 @@ use std::error::Error;
 
 use crate::gptcall::call_openai_chat;
 use crate::simparse::fetch_and_extract;
-use crate::my_secret::OPENAI_KEY;
+use crate::my_secret::get_openai_key_var;
 
 pub async fn information_extraction(input: &str, entities: Option<&[&str]>, proxy_url: Option<&str>) -> Result<String, Box<dyn Error>> {
     
@@ -38,7 +38,7 @@ pub async fn information_extraction(input: &str, entities: Option<&[&str]>, prox
     );
 
     // Call OpenAI Chat
-    let response = call_openai_chat("You are a helpful assistant.", &constructed_prompt, OPENAI_KEY).await?;
+    let response = call_openai_chat("You are a helpful assistant.", &constructed_prompt, get_openai_key_var()).await?;
     Ok(response)
 }
 
