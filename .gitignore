@@ -10,3 +10,5 @@ target
 .vscode
 web_server/outputs/*
 web_server/uploads/*
+outputs
+uploads

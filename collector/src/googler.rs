@@ -18,7 +18,7 @@ pub async fn search_query(query: &str) -> Result<Value, Box<dyn Error>> {
     params.insert("gl".to_string(), "us".to_string());
     params.insert("hl".to_string(), "en".to_string());
 
-    let search = SerpApiSearch::google(params, my_secret::SERP_API_KEY.to_string());
+    let search = SerpApiSearch::google(params, my_secret::get_serp_api_key_var().to_string());
     
     let results = search.json().await?;
 
