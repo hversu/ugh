@@ -7,9 +7,9 @@ pub const OPENAI_KEY: &str = "<your OpenAI key>";
 
 lazy_static! {
     pub static ref SERP_API_KEY_VAR: String =
-        env::var("SERP_API_KEY_VAR").unwrap_or_else(|_| SERP_API_KEY.to_string());
+        env::var("SERP_API_KEY").unwrap_or_else(|_| SERP_API_KEY.to_string());
     pub static ref OPENAI_KEY_VAR: String =
-        env::var("OPENAI_KEY_VAR").unwrap_or_else(|_| OPENAI_KEY.to_string());
+        env::var("OPENAI_KEY").unwrap_or_else(|_| OPENAI_KEY.to_string());
 }
 
 // Function to get the SERP_API_KEY_VAR as &str
