@@ -1,10 +1,4 @@
-# Running the web server
 
-1. clone repo on Linux web server
-2. if serving locally, change `0.0.0.0:3000` to `127.0.0.1:3000` in `~/ugh/web_server/src/main.rs`
-3. in `~/ugh`, enter `cargo build`, `cargo run -p web_server` - the web server should enter a LISTENING state
-4. you should be able to hit the web server on port 3000 for the graph interface
-5. Can use example data from `~/ugh/example_data`
 
 # ugh... (universal graph harness)!
 
@@ -23,6 +17,16 @@ in progress:
 to support:
 - Vertex Synapse
 - Relational Data
+
+# Running the web server
+
+1. clone repo on Linux web server
+2. if serving locally, change `0.0.0.0:3000` to `127.0.0.1:3000` in `~/ugh/web_server/src/main.rs`
+3. in `~/ugh`, enter `cargo build`, `cargo run -p web_server` - the web server should enter a LISTENING state
+4. you should be able to hit the web server on port 3000 for the graph interface
+5. Can use example data from `~/ugh/example_data`
+
+# Commandline Usage
 
 ## universal_graph_transformer
 
