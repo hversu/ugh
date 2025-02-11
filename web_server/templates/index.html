@@ -558,11 +558,15 @@
 
         const dropdown = document.getElementById('graph-filter-dropdown');
         let dragInProgress = false;
+          const graphContainer = document.getElementById('graph-container');
+          const width = graphContainer.clientWidth;
+          const height = graphContainer.clientHeight;
 
-        const Graph = ForceGraph()
+
+          const Graph = ForceGraph()
             (document.getElementById('graph-container'))
-            .width(800)
-            .height(800)
+            .width(width)
+            .height(height)
             .nodeId('id')
             .nodeVal(7)
             .nodeColor(node => "#aaaaaa")
