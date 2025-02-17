@@ -22,7 +22,7 @@ use tower_http::{
     services::{ServeDir}
 };
 use futures::{Stream, TryStreamExt};
-use std::io;
+use std::{env, io};
 use axum::routing::get_service;
 use tokio::{fs::File, io::BufWriter};
 use tokio_util::io::StreamReader;
@@ -40,6 +40,7 @@ fn routes_static() -> Router {
 #[tokio::main]
 async fn main() -> io::Result<()>{
     dotenv().ok();
+    println!("Starting server... {:?}",  env::var("OPENAI_KEY").unwrap_or("".to_string()));
     let app = Router::new()
         .route("/", get(index))
         .route("/upload", post(accept_form))
@@ -61,11 +62,7 @@ async fn accept_form(mut multipart: Multipart) -> Result<String, (StatusCode, St
     let output_path = format!("{}/{}.json", OUTPUT_DIRECTORY, my_uuid);
     while let Ok(Some(field)) = multipart.next_field().await {
         // Generate a random UUID
-        let file_name = if let Some(file_name) = field.file_name() {
-            format!("{}-{}", my_uuid, file_name.to_owned())
-        } else {
-            my_uuid.to_string()
-        };
+        let file_name = my_uuid.to_string();
         file_path = format!("{}/{}", file_path, file_name);
         stream_to_file(&file_name, field).await?;
         match graph_transformer(&file_path, "auto", &output_path).await {
